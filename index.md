@@ -1,13 +1,17 @@
 ---
-title: Jekyll Serif Theme
+title: SJP Journal
 layout: home
-description: Jekyll Serif contains content types for a typical business website. The theme is fully responsive, blazing fast and artfully illustrated.
-intro_image: "images/illustrations/pointing.svg"
+description: "SJP Journal amplifies student voices and independent analysis on the struggle for justice and liberation in Palestine."
+intro_image: "images/home.png"
 intro_image_absolute: true
 intro_image_hide_on_mobile: true
-show_call_box: true
+show_call_box: false
 ---
 
-# Serif - A Jekyll Business Theme.
+# SJP Journal
 
-Serif contains content types for a typical business website. The theme is fully responsive, blazing fast and artfully illustrated.
+Welcome to **SJP Journal**, a publication by *Students for Justice in Palestine (SJP)* dedicated to informed analysis, historical context, and solidarity reporting on the Palestinian struggle.  
+
+Our writing explores the realities of occupation, resistance, and advocacy, connecting student movements with global conversations about justice, human rights, and liberation.  
+
+We seek to document truth, challenge narratives, and amplify voices committed to freedom for Palestine.

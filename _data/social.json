@@ -1,27 +1,27 @@
 [
   {
     "name": "Github",
-    "link": "https://github.com/zerostaticthemes/jekyll-serif-theme",
+    "link": "https://www.google.com",
     "image": "images/social/github.svg"
   },
   {
     "name": "Twitter",
-    "link": "https://twitter.com/zerostaticio",
+    "link": "https://www.google.com",
     "image": "images/social/twitter.svg"
   },
   {
       "name": "Facebook",
-      "link": "https://facebook.com",
+      "link": "https://www.google.com",
       "image": "images/social/facebook.svg"
   },
   {
       "name": "Email",
-      "link": "mailto:ekyllserif@example.com ",
+      "link": "mailto:www.google.com",
       "image": "images/social/email.svg"
   },
   {
       "name": "Instagram",
-      "link": "https://instagram.com",
+      "link": "https://www.instagram.com/rowansjp/",
       "image": "images/social/instagram.svg"
   },
   {
