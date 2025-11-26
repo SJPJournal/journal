@@ -9,7 +9,7 @@ bodyClass: page-about
 
 We are a coalition of students, educators, and community members standing in solidarity with the people of Palestine. Through education, advocacy, and action, we seek to raise awareness about ongoing injustices, amplify Palestinian voices, and mobilize for human rights and liberation.
 
-![Justice for Palestine](/images/palestine-solidarity.png)
+![Justice for Palestine](./images/palestine-solidarity.png)
 
 # Our Objectives
 
