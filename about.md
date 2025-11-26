@@ -15,9 +15,9 @@ We are a coalition of students, educators, and community members standing in sol
 
 Our movement is rooted in principles of justice, equality, and solidarity. We aim to:
 
-1. Educate our campuses and communities about the history and reality of Palestinian life under occupation.  
-2. Advocate for accountability and an end to policies that sustain oppression and displacement.  
-3. Support global calls for freedom, dignity, and self-determination for the Palestinian people.  
+1. Educate our campuses and communities about the history and reality of Palestinian life under occupation.
+2. Advocate for accountability and an end to policies that sustain oppression and displacement.
+3. Support global calls for freedom, dignity, and self-determination for the Palestinian people.
 4. Build cross-movement solidarity among struggles for liberation, decolonization, and justice everywhere.
 
 ## Education
@@ -37,16 +37,16 @@ We believe in people-powered change. By connecting with local and global allies,
 ## Words of Solidarity
 
 > “We know too well that our freedom is incomplete without the freedom of the Palestinians.”  
-> — *Nelson Mandela*
+> — _Nelson Mandela_
 
 > “The problem that exists in Palestine is not a religious problem … It is a question of colonialism.”  
-> — *Malcolm X*
+> — _Malcolm X_
 
 > “Lastly, I speak out in indignation as I think of the Palestinians, whom this most inhuman humanity has replaced with another people … the valiant Palestinian people, the families which have been splintered and split up and are wandering throughout the world seeking asylum.”  
-> — *Thomas Sankara*
+> — _Thomas Sankara_
 
 > “Injustice anywhere is a threat to justice everywhere.”  
-> — *Martin Luther King Jr.*
+> — _Martin Luther King Jr._
 
 ---
 

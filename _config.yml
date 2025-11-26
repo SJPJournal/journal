@@ -1,4 +1,5 @@
-baseurl: "/"
+url: "https://sjpjournal.github.io"
+baseurl: "/journal"
 permalink: pretty
 title: "SJP Journal"
 
@@ -11,7 +12,7 @@ logo:
   desktop_width: "120px"
 
 home:
-  limit_articles: 9   # previously limit_services
+  limit_articles: 9 # previously limit_services
 
 collections:
   articles:

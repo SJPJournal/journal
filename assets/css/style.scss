@@ -175,6 +175,20 @@ a {
   }
 }
 
+a.btn.btn-outline-dark.btn-sm {
+  background: none !important;
+  border: none !important;
+  color: #007A3D !important;      /* Palestinian green */
+  text-decoration: underline !important;
+  padding: 0 !important;
+  font-weight: 500;
+}
+
+a.btn.btn-outline-dark.btn-sm:hover {
+  color: #D8232A !important;       /* Red hover accent */
+  text-decoration: underline !important;
+}
+
 .header,
 .header a,
 .header a:visited {
