@@ -1,5 +1,5 @@
 url: "https://sjpjournal.github.io"
-baseurl: ""
+baseurl: "/docs"
 permalink: pretty
 title: "SJP Journal"
 
