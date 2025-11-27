@@ -36,11 +36,17 @@ bodyClass: "page-teams"
                     <a target="_blank" href="{{ team.linkedinurl }}" rel="noreferrer">LinkedIn</a>
                     {% endif %}
                 </div>
-                <div class="team-content">{{ team.excerpt | truncate: 120 }}</div>
+
+                <!-- ⭐ UPDATED: show real team description -->
+                <div class="team-content">
+                    {{ team.content | markdownify | strip_html | truncatewords: 25 }}
+                </div>
+
             </div>
         </div>
         {% endfor %}
     </div>
+
     <div class="row pt-6 pb-6">
         {% assign teams = site.team | where: "promoted", empty | sort: "weight" %}
         {% for team in teams %}
@@ -55,6 +61,12 @@ bodyClass: "page-teams"
                     <h2 class="team-name"><a href="{{ team.url | relative_url }}">{{ team.title }}</a></h2>
                     <p class="team-description">{{ team.jobtitle }}</p>
                 </div>
+
+                <!-- ⭐ UPDATED for non-promoted team members -->
+                <div class="team-content">
+                    {{ team.content | markdownify | strip_html | truncatewords: 20 }}
+                </div>
+
             </div>
         </div>
         {% endfor %}
