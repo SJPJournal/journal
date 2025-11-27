@@ -1,7 +1,7 @@
 ---
 title: "Wajid Manzoor"
 date: 2025-11-05T10:47:58+10:00
-image: "images/team/wajid.jpg"
+image: "images/team/wajid.jpeg"
 jobtitle: "Graphic Designer"
 linkedinurl: ""
 weight: 7

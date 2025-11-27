@@ -1,7 +1,7 @@
 ---
 title: "Team 2"
 date: 2025-11-05T10:47:58+10:00
-image: "images/team/t2.jpg"
+image: "images/team/t1.jpg"
 jobtitle: "Job 2"
 linkedinurl: ""
 weight: 7
