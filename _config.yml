@@ -20,6 +20,7 @@ collections:
     sort_by: weight
   team:
     output: true
+    sort_by: weight
 
 defaults:
   - scope:
