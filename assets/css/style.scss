@@ -225,41 +225,140 @@ a.btn.btn-outline-dark.btn-sm:hover {
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
 }
 
-// =======================
-// 🇵🇸 Full-Height Portrait Carousel (Improved)
-// =======================
-.pal-carousel-wrapper {
-  background: #f4f4f4;
-  padding: 40px 0;
+
+/* ============================================================
+   🌈 1. SECTION WRAPPER (POSITIONING LAYERS)
+=========================================================== */
+.pal-bg-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 30px 30px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 520px; /* matches carousel height */
+  overflow: hidden;
+}
+/* ============================================================
+   🎨 2. WATERCOLOR PALESTINIAN FLAG MOSAIC (BACKGROUND)
+=========================================================== */
+.pal-watercolor-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  /* 1️⃣ Base horizontal flag stripes (clean gradient version) */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.30) 0%,
+      rgba(0,0,0,0.25) 28%,
+      rgba(255,255,255,0.30) 28%,
+      rgba(255,255,255,0.30) 63%,
+      rgba(216,35,42,0.30) 63%,
+      rgba(216,35,42,0.27) 100%
+    );
+
+  /* 2️⃣ Textured painterly overlay */
+  mask-image: radial-gradient(circle at 50% 50%, black 55%, transparent 100%);
+  opacity: 1; /* medium-strong aesthetic presence */
+
+  /* 3️⃣ Add painterly grain texture */
+  background-blend-mode: overlay;
+
+  /* Subtle grain texture layer */
+  --grain: url("https://i.imgur.com/8I9FfK8.png"); /* VERY subtle canvas texture */
+  background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.30) 0%,
+        rgba(0,0,0,0.25) 28%,
+        rgba(255,255,255,0.30) 28%,
+        rgba(255,255,255,0.30) 63%,
+        rgba(216,35,42,0.30) 63%,
+        rgba(216,35,42,0.27) 100%
+      ),
+      var(--grain);
+
+  background-size: cover, 800px;
+  filter: blur(6px) saturate(1.1);
 }
 
+
+.pal-spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 620px;
+  height: 620px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 2;
+
+  background: radial-gradient(
+      circle,
+      rgba(255,255,255,0.55) 0%,
+      rgba(255,255,255,0.25) 40%,
+      rgba(255,255,255,0) 75%
+  );
+  pointer-events: none;
+}
+
+
+.pal-glass-strip {
+  position: absolute;
+  top: calc(50% + 150px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 880px;
+  height: 80px;
+  z-index: 3;
+
+  background: rgba(255,255,255,0.13);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+
+  box-shadow:
+    inset 0 0 16px rgba(255,255,255,0.25),
+    inset 0 0 6px rgba(0,0,0,0.07);
+}
+
+
+
+/* ============================================================
+   🇵🇸 CAROUSEL CONTAINER (STAYS EXACT)
+=========================================================== */
+
 .pal-carousel-container {
-  width: 85%;
-  max-width: 900px;
-  height: 480px; /* Reduced, tighter */
+  width: 900px;
+  height: 480px;
   position: relative;
-  overflow: hidden;
+  z-index: 10;
+  filter: drop-shadow(0 40px 110px rgba(0,0,0,0.22));
 }
 
 .pal-carousel-track {
-  position: relative;
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
-/* Base item */
+/* ============================================================
+   🇵🇸 IMAGE CARDS
+=========================================================== */
+
 .pal-item {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 50%;    /* wider portrait card */
-  height: 100%;  /* fill container top-to-bottom */
-  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 92%;
   border-radius: 20px;
   overflow: hidden;
-  transition: all 0.5s ease;
+  transform-style: preserve-3d;
+  transition: transform .8s cubic-bezier(0.22,0.85,0.35,1),
+              opacity .6s ease,
+              box-shadow .6s ease;
 }
 
 .pal-item img {
@@ -268,62 +367,81 @@ a.btn.btn-outline-dark.btn-sm:hover {
   object-fit: cover;
 }
 
-/* Main (center) image */
-.pal-item.main {
-  z-index: 4;
-  width: 50%;
+/* ============================================================
+   🇵🇸 CENTER IMAGE — PROPER PORTRAIT SIZING
+=========================================================== */
+
+.pal-pos-0 {
+  z-index: 1000;
+  transform: translate(-50%, -50%) scale(1.05);
+  aspect-ratio: 3 / 4;
   height: 100%;
-  transform: translate(-50%, -50%) scale(1);
-  border: 4px solid #007A3D; /* Palestinian green */
-  box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+  width: auto;
+  border: 4px solid #007A3D;
+  box-shadow: 0 22px 45px rgba(0,0,0,.35);
+  //overflow: hidden;
 }
 
-/* Left image: pushed left but still large */
-.pal-item.left {
-  z-index: 2;
-  width: 45%;
-  height: 100%;
-  transform: translate(-115%, -50%) scale(0.92);
-  filter: blur(2px) brightness(80%);
-  opacity: 0.9;
+/* ============================================================
+   🇵🇸 3D POSITIONS (UNCHANGED)
+=========================================================== */
+
+.pal-pos-1 {
+  z-index: 700;
+  transform: translate(calc(-50% + 210px), -50%) rotateY(-22deg) scale(.92);
+  opacity: .92;
 }
 
-/* Right image: pushed right but still large */
-.pal-item.right {
-  z-index: 2;
-  width: 45%;
-  height: 100%;
-  transform: translate(15%, -50%) scale(0.92);
-  filter: blur(2px) brightness(80%);
-  opacity: 0.9;
+.pal-pos-2 {
+  z-index: 500;
+  transform: translate(calc(-50% + 360px), -50%) rotateY(-36deg) scale(.78);
+  opacity: .7;
+  filter: blur(1px);
 }
 
-/* Arrows (now placed inside and centered better) */
+.pal-pos-3 {
+  z-index: 100;
+  transform: translate(-50%, calc(-50% + 70px)) scale(.55) rotateY(180deg);
+  opacity: .25;
+  filter: blur(1px);
+}
+
+.pal-pos-4 {
+  z-index: 500;
+  transform: translate(calc(-50% - 360px), -50%) rotateY(36deg) scale(.78);
+  opacity: .7;
+  filter: blur(1px);
+}
+
+.pal-pos-5 {
+  z-index: 700;
+  transform: translate(calc(-50% - 210px), -50%) rotateY(22deg) scale(.92);
+  opacity: .92;
+}
+
+/* ============================================================
+   🇵🇸 SLIDE BUTTONS (UNCHANGED)
+=========================================================== */
+
 .pal-btn {
   position: absolute;
   top: 50%;
+  width: 60px;
+  height: 60px;
   transform: translateY(-50%);
-  background: rgba(255,255,255,0.95);
-  width: 55px;
-  height: 55px;
   border-radius: 50%;
-  font-size: 34px;
-  color: #333;
+  background: white;
+  font-size: 32px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-  transition: 0.25s ease;
-  z-index: 10;
+  z-index: 2000;
 }
 
-.pal-btn:hover {
-  background: #fff;
-  transform: translateY(-50%) scale(1.15);
-}
+.pal-prev { left: -40px; }
+.pal-next { right: -40px; }
 
-/* Slightly closer to main image so easier to click */
-.pal-prev { left: 10px; }
-.pal-next { right: 10px; }
+
 

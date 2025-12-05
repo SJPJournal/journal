@@ -124,6 +124,67 @@
   </div>
 </div>
 
+<!-- ⭐⭐⭐ IMAGE CAROUSEL STARTS HERE ⭐⭐⭐ -->
+<div class="pal-carousel-wrapper">
+  <div class="pal-carousel-container">
+    <div id="pal-carousel-track" class="pal-carousel-track">
+      <!-- Images will be injected here by JS -->
+    </div>
+
+    <div class="pal-btn pal-prev" onclick="palShift(-1)">&#10094;</div>
+    <div class="pal-btn pal-next" onclick="palShift(1)">&#10095;</div>
+  </div>
+</div>
+
+<script>
+  const palImages = [
+    
+    
+      "/journal/images/gallery/17ED424F-4740-4A3F-B35A-BA544569BBF3.jpg",
+    
+      "/journal/images/gallery/5872B590-BC63-4767-9030-09FB35A71BEB.JPG",
+    
+      "/journal/images/gallery/D3E78D4E-B866-4B39-8D67-41B2002D5F20.JPG",
+    
+      "/journal/images/gallery/DA8D313A-F9EF-4CAB-BB9E-2EA2503F6759.jpg",
+    
+      "/journal/images/gallery/EE3B758F-8C4B-4C03-BCB2-955D8D6C4572.jpg"
+    
+  ];
+
+  let palIndex = 0;
+
+  function palRender() {
+    const track = document.getElementById("pal-carousel-track");
+    track.innerHTML = "";
+
+    const left = palImages[(palIndex - 1 + palImages.length) % palImages.length];
+    const center = palImages[palIndex];
+    const right = palImages[(palIndex + 1) % palImages.length];
+
+    track.innerHTML += `
+      <div class="pal-item left"><img src="${left}"></div>
+    `;
+    track.innerHTML += `
+      <div class="pal-item main"><img src="${center}"></div>
+    `;
+    track.innerHTML += `
+      <div class="pal-item right"><img src="${right}"></div>
+    `;
+  }
+
+  function palShift(dir) {
+    palIndex = (palIndex + dir + palImages.length) % palImages.length;
+    palRender();
+  }
+
+  palRender();
+</script>
+
+
+
+<!-- ⭐⭐⭐ IMAGE CAROUSEL ENDS HERE ⭐⭐⭐ -->
+
 <!-- Articles Section -->
 <div class="strip">
   <div class="container pt-6 pb-6 pb-md-10">

@@ -125,20 +125,36 @@
 </div>
 
 <!-- ⭐⭐⭐ IMAGE CAROUSEL STARTS HERE ⭐⭐⭐ -->
-<div class="pal-carousel-wrapper">
-  <div class="pal-carousel-container">
-    <div id="pal-carousel-track" class="pal-carousel-track">
-      <!-- Images will be injected here by JS -->
-    </div>
 
-    <div class="pal-btn pal-prev" onclick="palShift(-1)">&#10094;</div>
-    <div class="pal-btn pal-next" onclick="palShift(1)">&#10095;</div>
+<div class="pal-bg-wrapper">
+
+  <div class="pal-watercolor-bg"></div>
+  <div class="pal-spotlight"></div>
+  <div class="pal-glass-strip"></div>
+
+  <div class="pal-carousel-container">
+      <div id="pal-carousel-track" class="pal-carousel-track"></div>
+
+      <div class="pal-btn pal-prev">❮</div>
+      <div class="pal-btn pal-next">❯</div>
   </div>
+
 </div>
+
 
 <script>
   const palImages = [
     
+    
+      "/journal/docs/images/gallery/17ED424F-4740-4A3F-B35A-BA544569BBF3.jpg",
+    
+      "/journal/docs/images/gallery/5872B590-BC63-4767-9030-09FB35A71BEB.JPG",
+    
+      "/journal/docs/images/gallery/D3E78D4E-B866-4B39-8D67-41B2002D5F20.JPG",
+    
+      "/journal/docs/images/gallery/DA8D313A-F9EF-4CAB-BB9E-2EA2503F6759.jpg",
+    
+      "/journal/docs/images/gallery/EE3B758F-8C4B-4C03-BCB2-955D8D6C4572.jpg",
     
       "/journal/images/gallery/17ED424F-4740-4A3F-B35A-BA544569BBF3.jpg",
     
@@ -153,32 +169,83 @@
   ];
 
   let palIndex = 0;
+  let autoRotate;
 
-  function palRender() {
-    const track = document.getElementById("pal-carousel-track");
-    track.innerHTML = "";
+/* Assign 6 rotating classes */
+function palRender() {
+  const track = document.getElementById("pal-carousel-track");
+  track.innerHTML = "";
 
-    const left = palImages[(palIndex - 1 + palImages.length) % palImages.length];
-    const center = palImages[palIndex];
-    const right = palImages[(palIndex + 1) % palImages.length];
+  // Six positions in the wheel
+  const positions = ["pal-pos-0", "pal-pos-1", "pal-pos-2", "pal-pos-3", "pal-pos-4", "pal-pos-5"];
 
+  for (let i = 0; i < 6; i++) {
+    const imgIndex = (palIndex + i + palImages.length) % palImages.length;
     track.innerHTML += `
-      <div class="pal-item left"><img src="${left}"></div>
-    `;
-    track.innerHTML += `
-      <div class="pal-item main"><img src="${center}"></div>
-    `;
-    track.innerHTML += `
-      <div class="pal-item right"><img src="${right}"></div>
+      <div class="pal-item ${positions[i]}" data-pos="${i}">
+        <img src="${palImages[imgIndex]}">
+      </div>
     `;
   }
 
-  function palShift(dir) {
-    palIndex = (palIndex + dir + palImages.length) % palImages.length;
-    palRender();
-  }
+  /* center glow effect */
+  setTimeout(() => {
+    document.querySelector(".pal-pos-0").classList.add("glow");
+    setTimeout(() => {
+      document.querySelector(".pal-pos-0").classList.remove("glow");
+    }, 600);
+  }, 50);
+}
+
+function palShift(dir) {
+  palIndex = (palIndex + dir + palImages.length) % palImages.length;
+
+  // Add slide animation
+  document.querySelectorAll(".pal-item").forEach(el => {
+    el.classList.remove("slide-left", "slide-right");
+    if (dir === 1) el.classList.add("slide-right");
+    else el.classList.add("slide-left");
+  });
 
   palRender();
+  restartAuto();
+}
+
+/* Auto-slide every 4s */
+function startAuto() {
+  autoRotate = setInterval(() => palShift(1), 4000);
+}
+function restartAuto() {
+  clearInterval(autoRotate);
+  startAuto();
+}
+
+/* ================================
+   🇵🇸 SWIPE SUPPORT (mobile)
+================================ */
+let touchX = null;
+
+document.addEventListener("touchstart", (e) => {
+  touchX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", (e) => {
+  if (!touchX) return;
+  let endX = e.changedTouches[0].clientX;
+
+  if (endX - touchX > 60) palShift(-1);
+  else if (touchX - endX > 60) palShift(1);
+
+  touchX = null;
+});
+
+/* Click on arrows */
+document.querySelector(".pal-prev").onclick = () => palShift(-1);
+document.querySelector(".pal-next").onclick = () => palShift(1);
+
+/* Initialize */
+palRender();
+startAuto();
 </script>
 
 
