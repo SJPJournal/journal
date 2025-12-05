@@ -225,3 +225,105 @@ a.btn.btn-outline-dark.btn-sm:hover {
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
 }
 
+// =======================
+// 🇵🇸 Full-Height Portrait Carousel (Improved)
+// =======================
+.pal-carousel-wrapper {
+  background: #f4f4f4;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.pal-carousel-container {
+  width: 85%;
+  max-width: 900px;
+  height: 480px; /* Reduced, tighter */
+  position: relative;
+  overflow: hidden;
+}
+
+.pal-carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Base item */
+.pal-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;    /* wider portrait card */
+  height: 100%;  /* fill container top-to-bottom */
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.pal-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Main (center) image */
+.pal-item.main {
+  z-index: 4;
+  width: 50%;
+  height: 100%;
+  transform: translate(-50%, -50%) scale(1);
+  border: 4px solid #007A3D; /* Palestinian green */
+  box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+}
+
+/* Left image: pushed left but still large */
+.pal-item.left {
+  z-index: 2;
+  width: 45%;
+  height: 100%;
+  transform: translate(-115%, -50%) scale(0.92);
+  filter: blur(2px) brightness(80%);
+  opacity: 0.9;
+}
+
+/* Right image: pushed right but still large */
+.pal-item.right {
+  z-index: 2;
+  width: 45%;
+  height: 100%;
+  transform: translate(15%, -50%) scale(0.92);
+  filter: blur(2px) brightness(80%);
+  opacity: 0.9;
+}
+
+/* Arrows (now placed inside and centered better) */
+.pal-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.95);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: 34px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  transition: 0.25s ease;
+  z-index: 10;
+}
+
+.pal-btn:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* Slightly closer to main image so easier to click */
+.pal-prev { left: 10px; }
+.pal-next { right: 10px; }
+
