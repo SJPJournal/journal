@@ -147,6 +147,53 @@
 
 </div>
 
+<style>
+  .pal-watercolor-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  /* 1️⃣ Base horizontal flag stripes (clean gradient version) */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.30) 0%,
+      rgba(0,0,0,0.25) 28%,
+      rgba(255,255,255,0.30) 28%,
+      rgba(255,255,255,0.30) 63%,
+      rgba(216,35,42,0.30) 63%,
+      rgba(216,35,42,0.27) 100%
+    );
+
+  /* 2️⃣ Textured painterly overlay */
+  mask-image: radial-gradient(circle at 50% 50%, black 55%, transparent 100%);
+  opacity: 1; /* medium-strong aesthetic presence */
+
+  /* 3️⃣ Add painterly grain texture */
+  background-blend-mode: overlay;
+
+  /* Subtle grain texture layer */
+  --grain: url("/journal/assets/textures/grain.png"); /* VERY subtle canvas texture */
+  background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.30) 0%,
+        rgba(0,0,0,0.25) 28%,
+        rgba(255,255,255,0.30) 28%,
+        rgba(255,255,255,0.30) 63%,
+        rgba(216,35,42,0.30) 63%,
+        rgba(216,35,42,0.27) 100%
+      ),
+      var(--grain);
+
+  background-size: cover, 800px;
+  filter: blur(6px) saturate(1.1);
+}
+
+
+
+</style>
+
 
 
 
