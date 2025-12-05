@@ -265,7 +265,7 @@ a.btn.btn-outline-dark.btn-sm:hover {
   background-blend-mode: overlay;
 
   /* Subtle grain texture layer */
-  --grain: url("https://i.imgur.com/8I9FfK8.png"); /* VERY subtle canvas texture */
+  --grain: url("{{ '/assets/textures/grain.png' | relative_url }}"); /* VERY subtle canvas texture */
   background-image:
       linear-gradient(
         to bottom,
