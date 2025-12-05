@@ -230,14 +230,15 @@ a.btn.btn-outline-dark.btn-sm:hover {
    🌈 1. SECTION WRAPPER (POSITIONING LAYERS)
 =========================================================== */
 .pal-bg-wrapper {
-  position: relative;
-  width: 100%;
-  padding: 30px 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 520px; /* matches carousel height */
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    min-height: 540px; /* FIX - ensures background is visible */
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 /* ============================================================
    🎨 2. WATERCOLOR PALESTINIAN FLAG MOSAIC (BACKGROUND)
