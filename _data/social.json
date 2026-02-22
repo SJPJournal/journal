@@ -1,33 +1,12 @@
 [
   {
-    "name": "Github",
-    "link": "https://www.google.com",
-    "image": "images/social/github.svg"
+    "name": "Email",
+    "link": "mailto:owansjp@gmail.com",
+    "image": "images/social/email.svg"
   },
   {
-    "name": "Twitter",
-    "link": "https://www.google.com",
-    "image": "images/social/twitter.svg"
-  },
-  {
-      "name": "Facebook",
-      "link": "https://www.google.com",
-      "image": "images/social/facebook.svg"
-  },
-  {
-      "name": "Email",
-      "link": "mailto:www.google.com",
-      "image": "images/social/email.svg"
-  },
-  {
-      "name": "Instagram",
-      "link": "https://www.instagram.com/rowansjp/",
-      "image": "images/social/instagram.svg"
-  },
-  {
-      "name": "Discord",
-      "link": "https://discord.com",
-      "image": "images/social/discord.svg"
+    "name": "Instagram",
+    "link": "https://www.instagram.com/rowansjp/",
+    "image": "images/social/instagram.svg"
   }
-
 ]
