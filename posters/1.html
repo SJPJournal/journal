@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SJP Journal — Submit Original Work</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .poster {
+    width: 660px;
+    background: #0a1a0f;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+  }
+
+  .keffiyeh-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image:
+      repeating-linear-gradient(0deg, #fff 0, #fff 2px, transparent 2px, transparent 20px),
+      repeating-linear-gradient(90deg, #fff 0, #fff 2px, transparent 2px, transparent 20px),
+      repeating-linear-gradient(45deg, #1a6b3a 0, #1a6b3a 1px, transparent 1px, transparent 14px),
+      repeating-linear-gradient(-45deg, #1a6b3a 0, #1a6b3a 1px, transparent 1px, transparent 14px);
+    background-size: 20px 20px, 20px 20px, 14px 14px, 14px 14px;
+    pointer-events: none;
+  }
+
+  /* FLAG TOP */
+  .flag-top {
+    height: 33px;
+    display: flex;
+    position: relative;
+  }
+  .flag-top .fb { flex: 1; }
+  .flag-triangle {
+    position: absolute;
+    left: 0; top: 0;
+    width: 0; height: 0;
+    border-top: 33px solid transparent;
+    border-bottom: 33px solid transparent;
+    border-left: 55px solid #c0392b;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 38px 50px 30px;
+    text-align: center;
+    position: relative;
+  }
+  .eyebrow {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 5px;
+    font-size: 11px;
+    color: #c0392b;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 0.92;
+    color: #f0ede6;
+    letter-spacing: -1px;
+  }
+  .header h1 .italic { font-style: italic; color: #e8c84a; display: block; }
+  .header h1 .sub { font-size: 34px; color: #1a6b3a; font-style: normal; letter-spacing: 5px; display: block; margin-top: 6px; }
+
+  /* STRIPE */
+  .stripe { height: 8px; display: flex; }
+  .stripe div { flex: 1; }
+
+  /* DOME */
+  .dome-wrap {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+  }
+  .dome-wrap svg { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+  .dome-glow {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 420px; height: 220px;
+    background: radial-gradient(ellipse at 50% 100%, rgba(232,200,74,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .stars { position: absolute; inset: 0; pointer-events: none; }
+  .star {
+    position: absolute; background: #fff; border-radius: 50%;
+    animation: twinkle 2.5s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%,100% { opacity: 0.5; } 50% { opacity: 1; }
+  }
+
+  /* OLIVE ROW */
+  .olive-row {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    padding: 13px 50px;
+    background: rgba(26,107,58,0.13);
+    border-top: 1px solid rgba(26,107,58,0.35);
+    border-bottom: 1px solid rgba(26,107,58,0.35);
+  }
+  .olive-quote {
+    font-family: 'Amiri', serif; font-style: italic;
+    font-size: 16px; color: #a8d5a2; text-align: center; line-height: 1.4;
+  }
+
+  /* BODY */
+  .body { padding: 30px 50px 22px; }
+  .body-lead {
+    font-family: 'Amiri', serif; font-size: 22px; color: #f0ede6;
+    line-height: 1.45; text-align: center; margin-bottom: 26px;
+  }
+  .body-lead strong { color: #e8c84a; }
+
+  .topics-hdr {
+    font-family: 'Bebas Neue', sans-serif; letter-spacing: 4px;
+    font-size: 10px; color: #c0392b; text-align: center; margin-bottom: 12px;
+  }
+  .topics { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 28px; }
+  .pill {
+    font-family: 'Amiri', serif; font-size: 13px;
+    padding: 5px 14px; border: 1px solid; letter-spacing: 0.5px;
+  }
+  .pr { border-color: #c0392b; color: #c0392b; }
+  .pg { border-color: #1a6b3a; color: #a8d5a2; }
+  .py { border-color: #e8c84a; color: #e8c84a; }
+  .pw { border-color: #666; color: #ccc; }
+  .sr { background: #c0392b; color: #fff; border-color: #c0392b; }
+  .sg { background: #1a6b3a; color: #f0ede6; border-color: #1a6b3a; }
+
+  /* WATERMELONS */
+  .wm-row { display: flex; justify-content: center; gap: 16px; margin-bottom: 24px; opacity: 0.8; }
+
+  /* BOTTOM */
+  .bottom { display: flex; align-items: center; gap: 26px; padding: 0 50px 32px; }
+  .bottom-left { flex: 1; }
+  .anon {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #1a6b3a; padding: 7px 13px; margin-bottom: 14px;
+    font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; font-size: 11px; color: #f0ede6;
+  }
+  .url {
+    font-family: 'Bebas Neue', sans-serif; font-size: 14px;
+    letter-spacing: 2px; color: #e8c84a; word-break: break-all; margin-bottom: 8px;
+  }
+  .orgname { font-family: 'Amiri', serif; font-size: 12px; color: #555; letter-spacing: 1px; }
+
+  .qr-wrap { text-align: center; }
+  .qr-box {
+    width: 118px; height: 118px;
+    border: 2.5px solid #e8c84a; padding: 7px;
+    background: #fff; display: flex; align-items: center; justify-content: center;
+  }
+  .qr-box img { width: 100%; height: 100%; image-rendering: pixelated; }
+  .qr-lbl { font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px; font-size: 9px; color: #e8c84a; margin-top: 6px; opacity: 0.7; }
+
+  /* FLAG BOTTOM */
+  .flag-bot { height: 16px; display: flex; }
+  .flag-bot div { flex: 1; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .header { animation: fadeUp 0.55s ease both; }
+  .dome-wrap { animation: fadeUp 0.55s 0.12s ease both; }
+  .body { animation: fadeUp 0.55s 0.25s ease both; }
+  .bottom { animation: fadeUp 0.55s 0.38s ease both; }
+</style>
+</head>
+<body>
+<div class="poster">
+<div class="keffiyeh-bg"></div>
+
+<!-- FLAG TOP -->
+<div class="flag-top">
+  <div class="fb" style="background:#1a1a1a"></div>
+  <div class="fb" style="background:#f0ede6"></div>
+  <div class="fb" style="background:#1a6b3a"></div>
+  <div class="flag-triangle"></div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <span class="eyebrow">✦ SJP Journal · Rowan University ✦</span>
+  <h1>
+    Submit
+    <span class="italic">Original Work</span>
+    <span class="sub">to the SJP Journal</span>
+  </h1>
+</div>
+
+<!-- STRIPE -->
+<div class="stripe">
+  <div style="background:#1a1a1a"></div>
+  <div style="background:#f0ede6"></div>
+  <div style="background:#1a6b3a"></div>
+  <div style="background:#c0392b"></div>
+</div>
+
+<!-- DOME ILLUSTRATION -->
+<div class="dome-wrap">
+  <div class="dome-glow"></div>
+  <div class="stars">
+    <div class="star" style="width:2px;height:2px;top:10%;left:8%;animation-delay:0s"></div>
+    <div class="star" style="width:3px;height:3px;top:18%;left:20%;animation-delay:0.5s"></div>
+    <div class="star" style="width:2px;height:2px;top:7%;left:34%;animation-delay:0.9s"></div>
+    <div class="star" style="width:2px;height:2px;top:22%;left:50%;animation-delay:0.3s"></div>
+    <div class="star" style="width:3px;height:3px;top:11%;left:65%;animation-delay:0.7s"></div>
+    <div class="star" style="width:2px;height:2px;top:19%;left:80%;animation-delay:1.1s"></div>
+    <div class="star" style="width:2px;height:2px;top:13%;left:92%;animation-delay:0.4s"></div>
+    <div class="star" style="width:1px;height:1px;top:28%;left:14%;animation-delay:1.3s"></div>
+    <div class="star" style="width:1px;height:1px;top:5%;left:57%;animation-delay:0.8s"></div>
+  </div>
+
+  <svg width="620" height="250" viewBox="0 0 620 250" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#050e08"/>
+        <stop offset="100%" stop-color="#0e2416"/>
+      </linearGradient>
+      <linearGradient id="domeG" x1="0" y1="0" x2="0.3" y2="1">
+        <stop offset="0%" stop-color="#f7d84e"/>
+        <stop offset="45%" stop-color="#e8c030"/>
+        <stop offset="100%" stop-color="#a07820"/>
+      </linearGradient>
+      <radialGradient id="sheen" cx="35%" cy="25%" r="55%">
+        <stop offset="0%" stop-color="rgba(255,255,200,0.3)"/>
+        <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+      </radialGradient>
+      <linearGradient id="tileG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3a8560"/>
+        <stop offset="100%" stop-color="#1e5038"/>
+      </linearGradient>
+      <linearGradient id="blueG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3070a8"/>
+        <stop offset="100%" stop-color="#1a4878"/>
+      </linearGradient>
+      <linearGradient id="drumG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#d4aa68"/>
+        <stop offset="100%" stop-color="#a87838"/>
+      </linearGradient>
+      <linearGradient id="groundG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#c8a870"/>
+        <stop offset="100%" stop-color="#907040"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Sky -->
+    <rect width="620" height="250" fill="url(#skyG)"/>
+
+    <!-- Crescent moon -->
+    <circle cx="530" cy="38" r="15" fill="#e8c84a" opacity="0.92"/>
+    <circle cx="539" cy="33" r="12" fill="#050e08"/>
+
+    <!-- Olive trees left -->
+    <rect x="52" y="205" width="7" height="45" fill="#5a3a18"/>
+    <ellipse cx="56" cy="192" rx="32" ry="42" fill="#1a5a28" opacity="0.85"/>
+    <ellipse cx="46" cy="184" rx="22" ry="30" fill="#1e6830" opacity="0.7"/>
+    <ellipse cx="68" cy="180" rx="18" ry="26" fill="#226030" opacity="0.65"/>
+    <!-- olive berries -->
+    <circle cx="48" cy="178" r="2.5" fill="#7ab860" opacity="0.8"/>
+    <circle cx="62" cy="172" r="2" fill="#7ab860" opacity="0.8"/>
+    <circle cx="38" cy="190" r="2" fill="#7ab860" opacity="0.7"/>
+
+    <rect x="108" y="212" width="6" height="38" fill="#5a3a18"/>
+    <ellipse cx="111" cy="200" rx="24" ry="32" fill="#1a5a28" opacity="0.78"/>
+
+    <!-- Olive trees right -->
+    <rect x="561" y="205" width="7" height="45" fill="#5a3a18"/>
+    <ellipse cx="565" cy="192" rx="32" ry="42" fill="#1a5a28" opacity="0.85"/>
+    <ellipse cx="573" cy="184" rx="22" ry="30" fill="#1e6830" opacity="0.7"/>
+    <ellipse cx="553" cy="180" rx="18" ry="26" fill="#226030" opacity="0.65"/>
+    <circle cx="572" cy="178" r="2.5" fill="#7ab860" opacity="0.8"/>
+    <circle cx="558" cy="172" r="2" fill="#7ab860" opacity="0.8"/>
+    <circle cx="582" cy="190" r="2" fill="#7ab860" opacity="0.7"/>
+
+    <rect x="505" y="212" width="6" height="38" fill="#5a3a18"/>
+    <ellipse cx="508" cy="200" rx="24" ry="32" fill="#1a5a28" opacity="0.78"/>
+
+    <!-- Ground platform -->
+    <rect x="70" y="214" width="480" height="36" fill="url(#groundG)" rx="2"/>
+    <rect x="74" y="216" width="472" height="2" fill="rgba(255,255,255,0.18)"/>
+
+    <!-- Main wall — green tiled -->
+    <rect x="130" y="170" width="360" height="58" fill="url(#tileG)"/>
+    <!-- tile lines horizontal -->
+    <line x1="130" y1="180" x2="490" y2="180" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+    <line x1="130" y1="190" x2="490" y2="190" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+    <line x1="130" y1="200" x2="490" y2="200" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+    <line x1="130" y1="210" x2="490" y2="210" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+    <!-- tile lines vertical -->
+    <line x1="170" y1="170" x2="170" y2="228" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    <line x1="210" y1="170" x2="210" y2="228" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    <line x1="250" y1="170" x2="250" y2="228" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    <line x1="310" y1="170" x2="310" y2="228" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    <line x1="370" y1="170" x2="370" y2="228" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    <line x1="410" y1="170" x2="410" y2="228" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    <line x1="450" y1="170" x2="450" y2="228" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+    <!-- Blue mosaic band -->
+    <rect x="134" y="158" width="352" height="18" fill="url(#blueG)"/>
+    <!-- geometric chevrons on blue band -->
+    <g stroke="rgba(255,255,255,0.35)" stroke-width="0.8" fill="none">
+      <polyline points="148,158 153,166 158,158"/>
+      <polyline points="165,158 170,166 175,158"/>
+      <polyline points="182,158 187,166 192,158"/>
+      <polyline points="199,158 204,166 209,158"/>
+      <polyline points="216,158 221,166 226,158"/>
+      <polyline points="233,158 238,166 243,158"/>
+      <polyline points="250,158 255,166 260,158"/>
+      <polyline points="267,158 272,166 277,158"/>
+      <polyline points="284,158 289,166 294,158"/>
+      <polyline points="301,158 306,166 311,158"/>
+      <polyline points="318,158 323,166 328,158"/>
+      <polyline points="335,158 340,166 345,158"/>
+      <polyline points="352,158 357,166 362,158"/>
+      <polyline points="369,158 374,166 379,158"/>
+      <polyline points="386,158 391,166 396,158"/>
+      <polyline points="403,158 408,166 413,158"/>
+      <polyline points="420,158 425,166 430,158"/>
+      <polyline points="437,158 442,166 447,158"/>
+      <polyline points="454,158 459,166 464,158"/>
+      <polyline points="471,158 476,166 481,158"/>
+    </g>
+
+    <!-- Arched doors & windows -->
+    <!-- Central door (pointed arch) -->
+    <path d="M285 170 L285 208 Q310 222 335 208 L335 170 Z" fill="rgba(0,0,0,0.55)"/>
+    <path d="M288 170 L288 206 Q310 218 332 206 L332 170 Z" fill="#100800" opacity="0.85"/>
+    <!-- left side windows -->
+    <path d="M158 173 L158 208 Q172 218 186 208 L186 173 Z" fill="rgba(0,0,0,0.45)"/>
+    <path d="M160 173 L160 206 Q172 215 184 206 L184 173 Z" fill="#100800" opacity="0.75"/>
+    <path d="M200 173 L200 208 Q214 218 228 208 L228 173 Z" fill="rgba(0,0,0,0.45)"/>
+    <path d="M202 173 L202 206 Q214 215 226 206 L226 173 Z" fill="#100800" opacity="0.75"/>
+    <!-- right side windows -->
+    <path d="M392 173 L392 208 Q406 218 420 208 L420 173 Z" fill="rgba(0,0,0,0.45)"/>
+    <path d="M394 173 L394 206 Q406 215 418 206 L418 173 Z" fill="#100800" opacity="0.75"/>
+    <path d="M434 173 L434 208 Q448 218 462 208 L462 173 Z" fill="rgba(0,0,0,0.45)"/>
+    <path d="M436 173 L436 206 Q448 215 460 206 L460 173 Z" fill="#100800" opacity="0.75"/>
+
+    <!-- Drum (octagonal) -->
+    <rect x="174" y="124" width="272" height="40" fill="url(#drumG)"/>
+    <rect x="178" y="126" width="264" height="3.5" fill="rgba(255,255,255,0.2)"/>
+    <rect x="178" y="158" width="264" height="3" fill="rgba(0,0,0,0.25)"/>
+    <!-- drum arched windows -->
+    <path d="M200 128 L200 158 Q213 167 226 158 L226 128 Z" fill="rgba(0,0,0,0.38)"/>
+    <path d="M202 128 L202 156 Q213 164 224 156 L224 128 Z" fill="#0e1a08" opacity="0.7"/>
+    <path d="M238 128 L238 158 Q251 167 264 158 L264 128 Z" fill="rgba(0,0,0,0.38)"/>
+    <path d="M240 128 L240 156 Q251 164 262 156 L262 128 Z" fill="#0e1a08" opacity="0.7"/>
+    <path d="M276 128 L276 158 Q289 167 302 158 L302 128 Z" fill="rgba(0,0,0,0.38)"/>
+    <path d="M278 128 L278 156 Q289 164 300 156 L300 128 Z" fill="#0e1a08" opacity="0.7"/>
+    <path d="M314 128 L314 158 Q327 167 340 158 L340 128 Z" fill="rgba(0,0,0,0.38)"/>
+    <path d="M316 128 L316 156 Q327 164 338 156 L338 128 Z" fill="#0e1a08" opacity="0.7"/>
+    <path d="M352 128 L352 158 Q365 167 378 158 L378 128 Z" fill="rgba(0,0,0,0.38)"/>
+    <path d="M354 128 L354 156 Q365 164 376 156 L376 128 Z" fill="#0e1a08" opacity="0.7"/>
+    <path d="M390 128 L390 158 Q403 167 416 158 L416 128 Z" fill="rgba(0,0,0,0.38)"/>
+    <path d="M392 128 L392 156 Q403 164 414 156 L414 128 Z" fill="#0e1a08" opacity="0.7"/>
+
+    <!-- THE GOLDEN DOME -->
+    <path d="M178 126 Q185 56 310 32 Q435 56 442 126 Z" fill="url(#domeG)"/>
+    <path d="M178 126 Q185 56 310 32 Q435 56 442 126 Z" fill="url(#sheen)"/>
+    <!-- dome ribs -->
+    <g stroke="rgba(0,0,0,0.11)" stroke-width="1" fill="none">
+      <path d="M310 32 Q260 78 228 126"/>
+      <path d="M310 32 Q275 72 254 126"/>
+      <path d="M310 32 Q292 66 280 126"/>
+      <path d="M310 32 Q328 66 340 126"/>
+      <path d="M310 32 Q345 72 366 126"/>
+      <path d="M310 32 Q360 78 392 126"/>
+    </g>
+    <!-- highlight arc -->
+    <path d="M228 112 Q263 62 300 46" stroke="rgba(255,255,220,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Drum top band -->
+    <rect x="180" y="122" width="260" height="5" fill="rgba(232,200,74,0.5)"/>
+
+    <!-- Spire -->
+    <line x1="310" y1="32" x2="310" y2="8" stroke="#e8c84a" stroke-width="3"/>
+    <!-- Crescent + star finial -->
+    <circle cx="310" cy="4" r="8" fill="#e8c84a"/>
+    <circle cx="314.5" cy="2" r="6.5" fill="#050e08"/>
+    <!-- star -->
+    <g transform="translate(320, 1) scale(0.65)">
+      <polygon points="0,-6 1.4,-2 5,-2 2.3,0.8 3.5,5 0,2.5 -3.5,5 -2.3,0.8 -5,-2 -1.4,-2" fill="#e8c84a"/>
+    </g>
+
+    <!-- Halo glow at dome base -->
+    <ellipse cx="310" cy="126" rx="135" ry="7" fill="rgba(232,200,74,0.14)"/>
+
+    <!-- Foreground ground detail -->
+    <ellipse cx="185" cy="230" rx="40" ry="6" fill="rgba(0,0,0,0.3)"/>
+    <ellipse cx="435" cy="230" rx="40" ry="6" fill="rgba(0,0,0,0.3)"/>
+  </svg>
+</div>
+
+<!-- OLIVE + QUOTE ROW -->
+<div class="olive-row">
+  <svg width="44" height="26" viewBox="0 0 44 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M38 22 Q28 16 18 9 Q13 5 6 3" stroke="#2a8040" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <ellipse cx="33" cy="20" rx="5" ry="2.8" fill="#2a8040" transform="rotate(-42 33 20)"/>
+    <ellipse cx="26" cy="15" rx="5" ry="2.8" fill="#1e6830" transform="rotate(-50 26 15)"/>
+    <ellipse cx="19" cy="10" rx="4.5" ry="2.5" fill="#2a8040" transform="rotate(-32 19 10)"/>
+    <ellipse cx="12" cy="6" rx="4" ry="2.2" fill="#1e6830" transform="rotate(-58 12 6)"/>
+    <circle cx="29" cy="18" r="1.4" fill="#7ab840" opacity="0.7"/>
+    <circle cx="22" cy="12" r="1.4" fill="#7ab840" opacity="0.7"/>
+  </svg>
+  <div class="olive-quote">"From the river to the page — every word is resistance"</div>
+  <svg width="44" height="26" viewBox="0 0 44 26" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform:scaleX(-1)">
+    <path d="M38 22 Q28 16 18 9 Q13 5 6 3" stroke="#2a8040" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <ellipse cx="33" cy="20" rx="5" ry="2.8" fill="#2a8040" transform="rotate(-42 33 20)"/>
+    <ellipse cx="26" cy="15" rx="5" ry="2.8" fill="#1e6830" transform="rotate(-50 26 15)"/>
+    <ellipse cx="19" cy="10" rx="4.5" ry="2.5" fill="#2a8040" transform="rotate(-32 19 10)"/>
+    <ellipse cx="12" cy="6" rx="4" ry="2.2" fill="#1e6830" transform="rotate(-58 12 6)"/>
+    <circle cx="29" cy="18" r="1.4" fill="#7ab840" opacity="0.7"/>
+    <circle cx="22" cy="12" r="1.4" fill="#7ab840" opacity="0.7"/>
+  </svg>
+</div>
+
+<!-- BODY -->
+<div class="body">
+  <div class="body-lead">
+    Share your voice with <strong>Rowan SJP</strong>.<br>
+    Your piece will educate, mobilize,<br>and inform our community.
+  </div>
+
+  <div class="topics-hdr">✦ &nbsp; We welcome writing on &nbsp; ✦</div>
+  <div class="topics">
+    <span class="pill sr">Palestinian Liberation</span>
+    <span class="pill pg">Campus Organizing</span>
+    <span class="pill py">History</span>
+    <span class="pill pw">Lived Experience</span>
+    <span class="pill sg">Solidarity</span>
+    <span class="pill pr">Reflections</span>
+    <span class="pill py">Call to Action</span>
+  </div>
+
+  <!-- Watermelon row -->
+  <div class="wm-row">
+    <!-- 7 watermelons -->
+    <svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 13 A10 10 0 0 1 23 13 Z" fill="#c0392b"/>
+      <path d="M4.5 13 A8.5 8.5 0 0 1 21.5 13 Z" fill="#e74c3c"/>
+      <rect x="3" y="12.5" width="20" height="2.5" fill="#f0ede6" rx="1"/>
+      <rect x="3" y="14.8" width="20" height="3" fill="#1a6b3a" rx="1"/>
+      <circle cx="8.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="13" cy="9" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="17.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+    </svg>
+    <svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 13 A10 10 0 0 1 23 13 Z" fill="#c0392b"/>
+      <path d="M4.5 13 A8.5 8.5 0 0 1 21.5 13 Z" fill="#e74c3c"/>
+      <rect x="3" y="12.5" width="20" height="2.5" fill="#f0ede6" rx="1"/>
+      <rect x="3" y="14.8" width="20" height="3" fill="#1a6b3a" rx="1"/>
+      <circle cx="8.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="13" cy="9" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="17.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+    </svg>
+    <svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 13 A10 10 0 0 1 23 13 Z" fill="#c0392b"/>
+      <path d="M4.5 13 A8.5 8.5 0 0 1 21.5 13 Z" fill="#e74c3c"/>
+      <rect x="3" y="12.5" width="20" height="2.5" fill="#f0ede6" rx="1"/>
+      <rect x="3" y="14.8" width="20" height="3" fill="#1a6b3a" rx="1"/>
+      <circle cx="8.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="13" cy="9" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="17.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+    </svg>
+    <svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 13 A10 10 0 0 1 23 13 Z" fill="#c0392b"/>
+      <path d="M4.5 13 A8.5 8.5 0 0 1 21.5 13 Z" fill="#e74c3c"/>
+      <rect x="3" y="12.5" width="20" height="2.5" fill="#f0ede6" rx="1"/>
+      <rect x="3" y="14.8" width="20" height="3" fill="#1a6b3a" rx="1"/>
+      <circle cx="8.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="13" cy="9" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="17.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+    </svg>
+    <svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 13 A10 10 0 0 1 23 13 Z" fill="#c0392b"/>
+      <path d="M4.5 13 A8.5 8.5 0 0 1 21.5 13 Z" fill="#e74c3c"/>
+      <rect x="3" y="12.5" width="20" height="2.5" fill="#f0ede6" rx="1"/>
+      <rect x="3" y="14.8" width="20" height="3" fill="#1a6b3a" rx="1"/>
+      <circle cx="8.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="13" cy="9" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="17.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+    </svg>
+    <svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 13 A10 10 0 0 1 23 13 Z" fill="#c0392b"/>
+      <path d="M4.5 13 A8.5 8.5 0 0 1 21.5 13 Z" fill="#e74c3c"/>
+      <rect x="3" y="12.5" width="20" height="2.5" fill="#f0ede6" rx="1"/>
+      <rect x="3" y="14.8" width="20" height="3" fill="#1a6b3a" rx="1"/>
+      <circle cx="8.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="13" cy="9" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="17.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+    </svg>
+    <svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 13 A10 10 0 0 1 23 13 Z" fill="#c0392b"/>
+      <path d="M4.5 13 A8.5 8.5 0 0 1 21.5 13 Z" fill="#e74c3c"/>
+      <rect x="3" y="12.5" width="20" height="2.5" fill="#f0ede6" rx="1"/>
+      <rect x="3" y="14.8" width="20" height="3" fill="#1a6b3a" rx="1"/>
+      <circle cx="8.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="13" cy="9" r="0.9" fill="#111" opacity="0.8"/>
+      <circle cx="17.5" cy="10.5" r="0.9" fill="#111" opacity="0.8"/>
+    </svg>
+  </div>
+</div>
+
+<!-- BOTTOM -->
+<div class="bottom">
+  <div class="bottom-left">
+    <div class="anon">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <circle cx="6" cy="4" r="2.5" stroke="#e8c84a" stroke-width="1"/>
+        <path d="M1 11 C1 8 11 8 11 11" stroke="#e8c84a" stroke-width="1" fill="none" stroke-linecap="round"/>
+      </svg>
+      Option to Stay Anonymous
+    </div>
+    <div class="url">sjpjournal.github.io/journal/</div>
+    <div class="orgname">Rowan Students for Justice in Palestine</div>
+  </div>
+  <div class="qr-wrap">
+    <div class="qr-box">
+      <img src="frame.png" alt="QR Code" width="104" height="104"/>
+    </div>
+    <div class="qr-lbl">Scan to Submit</div>
+  </div>
+</div>
+
+<!-- FLAG BOTTOM -->
+<div class="flag-bot">
+  <div style="background:#1a1a1a"></div>
+  <div style="background:#f0ede6"></div>
+  <div style="background:#1a6b3a"></div>
+  <div style="background:#c0392b"></div>
+</div>
+
+</div>
+</body>
+</html>

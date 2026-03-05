@@ -14,6 +14,9 @@ main:
   - name: "Contact"
     url: "/contact/"
     weight: 4
+  - name: "Submit Article"
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSfx4gXE6RMb44YGzdwp0eJXqpS9_upszc4sBZuEXXqtCBopcQ/viewform?usp=dialog"
+    weight: 5
 
 footer:
   - name: "Home"

@@ -10,8 +10,8 @@ show_call_box: false
 
 # SJP Journal
 
-Welcome to **SJP Journal**, a publication by *Students for Justice in Palestine (SJP)* dedicated to informed analysis, historical context, and solidarity reporting on the Palestinian struggle.  
+Welcome to **Rowan SJP Journal**, a publication by _Students for Justice in Palestine (SJP)_ dedicated to informed analysis, historical context, and solidarity reporting on the Palestinian struggle.
 
-Our writing explores the realities of occupation, resistance, and advocacy, connecting student movements with global conversations about justice, human rights, and liberation.  
+Our writing explores the realities of occupation, resistance, and advocacy, connecting student movements with global conversations about justice, human rights, and liberation.
 
 We seek to document truth, challenge narratives, and amplify voices committed to freedom for Palestine.
