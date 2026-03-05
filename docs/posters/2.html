@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SJP Journal — Submit Original Work</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1a1008;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Amiri', serif;
+  }
+
+  .poster {
+    width: 680px;
+    background: #fdf6e8;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.85);
+  }
+
+  /* Subtle parchment texture overlay */
+  .poster::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.5;
+  }
+
+  /* ── FLAG STRIPE TOP ── */
+  .flag-top {
+    height: 28px;
+    display: flex;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .flag-top .fs { flex: 1; }
+  .flag-tri {
+    position: absolute; left: 0; top: 0;
+    width: 0; height: 0;
+    border-top: 28px solid transparent;
+    border-bottom: 28px solid transparent;
+    border-left: 46px solid #c0392b;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 32px 52px 24px;
+    text-align: center;
+    position: relative;
+    background: #1c1208;
+  }
+
+  .header-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 6px;
+    font-size: 11px;
+    color: #e8c84a;
+    margin-bottom: 12px;
+    opacity: 0.85;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 64px;
+    line-height: 0.9;
+    color: #fdf6e8;
+    letter-spacing: -1.5px;
+  }
+  .header h1 .it { font-style: italic; color: #e8c84a; display: block; }
+  .header h1 .sm {
+    font-size: 26px;
+    color: #c8a878;
+    font-style: normal;
+    letter-spacing: 8px;
+    display: block;
+    margin-top: 10px;
+    font-weight: 400;
+  }
+
+  /* ── JERUSALEM SCENE ── */
+  .scene { position: relative; overflow: hidden; }
+
+  /* ── CONTENT AREA ── */
+  .content {
+    padding: 30px 52px 26px;
+    background: #fdf6e8;
+  }
+
+  .lead {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #1c1208;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 22px;
+  }
+  .lead strong { color: #c0392b; }
+
+  /* Keffiyeh divider */
+  .kef-divider {
+    height: 10px;
+    background: repeating-linear-gradient(
+      90deg,
+      #1c1208 0px, #1c1208 6px,
+      #fdf6e8 6px, #fdf6e8 12px,
+      #1a5a30 12px, #1a5a30 18px,
+      #fdf6e8 18px, #fdf6e8 24px
+    );
+    margin-bottom: 20px;
+    opacity: 0.7;
+  }
+
+  .topics-lbl {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 5px; font-size: 10px;
+    color: #8b1a1a; text-align: center; margin-bottom: 12px;
+  }
+
+  .topics {
+    display: flex; flex-wrap: wrap;
+    gap: 7px; justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .pill {
+    font-family: 'Amiri', serif;
+    font-size: 13px; padding: 5px 15px;
+    border: 1.5px solid; letter-spacing: 0.3px;
+  }
+  .pr  { border-color: #c0392b; color: #c0392b; background: transparent; }
+  .sr  { background: #c0392b; color: #fdf6e8; border-color: #c0392b; }
+  .pg  { border-color: #1a5a30; color: #1a5a30; }
+  .sg  { background: #1a5a30; color: #fdf6e8; border-color: #1a5a30; }
+  .pk  { border-color: #1c1208; color: #1c1208; }
+  .py  { border-color: #b8860b; color: #b8860b; }
+
+  /* Watermelon row */
+  .wm-row {
+    display: flex; justify-content: center;
+    gap: 14px; margin-bottom: 22px;
+  }
+
+  /* ── BOTTOM ── */
+  .bottom {
+    display: flex; align-items: center;
+    gap: 24px; padding: 0 52px 28px;
+    background: #fdf6e8;
+  }
+  .bottom-left { flex: 1; }
+
+  .anon-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #1a5a30; padding: 7px 14px; margin-bottom: 12px;
+  }
+  .anon-badge span {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2.5px; font-size: 11px; color: #fdf6e8;
+  }
+
+  .submit-url {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px; letter-spacing: 2px; color: #c0392b;
+    word-break: break-all; margin-bottom: 8px;
+  }
+
+  .org-name {
+    font-family: 'Amiri', serif; font-size: 13px;
+    color: #6b5a3a; letter-spacing: 0.5px;
+    font-style: italic;
+  }
+
+  .qr-wrap { text-align: center; flex-shrink: 0; }
+  .qr-box {
+    width: 116px; height: 116px;
+    border: 2.5px solid #1c1208; padding: 7px;
+    background: #fff;
+  }
+  .qr-box img { width: 100%; height: 100%; image-rendering: pixelated; }
+  .qr-lbl {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px; font-size: 9px;
+    color: #6b5a3a; margin-top: 6px;
+  }
+
+  /* FLAG BOTTOM */
+  .flag-bot { height: 14px; display: flex; }
+  .flag-bot div { flex: 1; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+  .header   { animation: fadeUp 0.6s ease both; }
+  .scene    { animation: fadeUp 0.6s 0.1s ease both; }
+  .content  { animation: fadeUp 0.6s 0.2s ease both; }
+  .bottom   { animation: fadeUp 0.6s 0.3s ease both; }
+
+  @keyframes twinkle { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+</style>
+</head>
+<body>
+<div class="poster">
+
+<!-- FLAG TOP -->
+<div class="flag-top">
+  <div class="fs" style="background:#1c1208"></div>
+  <div class="fs" style="background:#fdf6e8"></div>
+  <div class="fs" style="background:#1a5a30"></div>
+  <div class="flag-tri"></div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-tag">✦ &nbsp; SJP Journal &nbsp; · &nbsp; Rowan University &nbsp; ✦</div>
+  <h1>
+    Submit
+    <span class="it">Original Work</span>
+    <span class="sm">to the SJP Journal</span>
+  </h1>
+</div>
+
+<!-- JERUSALEM GOLDEN HOUR SCENE -->
+<div class="scene">
+<svg width="680" height="320" viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <!-- Sky: golden hour sunset -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1a0a2e"/>
+      <stop offset="25%"  stop-color="#4a1a5e"/>
+      <stop offset="55%"  stop-color="#c0462a"/>
+      <stop offset="75%"  stop-color="#e8820a"/>
+      <stop offset="90%"  stop-color="#f0b030"/>
+      <stop offset="100%" stop-color="#c89040"/>
+    </linearGradient>
+
+    <!-- Sun glow -->
+    <radialGradient id="sunGlow" cx="62%" cy="72%" r="38%">
+      <stop offset="0%"  stop-color="#fff5c0" stop-opacity="0.9"/>
+      <stop offset="20%" stop-color="#f8d060" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#e8820a" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+
+    <!-- Dome gold gradient -->
+    <linearGradient id="domeMain" x1="0.15" y1="0" x2="0.85" y2="1">
+      <stop offset="0%"   stop-color="#f8e080"/>
+      <stop offset="30%"  stop-color="#e8c030"/>
+      <stop offset="65%"  stop-color="#c89020"/>
+      <stop offset="100%" stop-color="#8a6010"/>
+    </linearGradient>
+    <radialGradient id="domeHighlight" cx="30%" cy="20%" r="55%">
+      <stop offset="0%"  stop-color="rgba(255,248,200,0.55)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+
+    <!-- Stone wall gradient -->
+    <linearGradient id="stoneG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#e8d0a0"/>
+      <stop offset="50%"  stop-color="#c8a870"/>
+      <stop offset="100%" stop-color="#a08050"/>
+    </linearGradient>
+    <linearGradient id="stoneGDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#c0a060"/>
+      <stop offset="100%" stop-color="#806030"/>
+    </linearGradient>
+
+    <!-- Blue mosaic -->
+    <linearGradient id="tileBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#6090c8"/>
+      <stop offset="100%" stop-color="#2858a0"/>
+    </linearGradient>
+    <linearGradient id="tileGreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#50a878"/>
+      <stop offset="100%" stop-color="#207048"/>
+    </linearGradient>
+
+    <!-- Ground / esplanade -->
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#d4b878"/>
+      <stop offset="100%" stop-color="#a08040"/>
+    </linearGradient>
+
+    <!-- Olive tree foliage -->
+    <radialGradient id="foliage1" cx="50%" cy="40%" r="55%">
+      <stop offset="0%"   stop-color="#6aa848"/>
+      <stop offset="60%"  stop-color="#3a7828"/>
+      <stop offset="100%" stop-color="#1e5018"/>
+    </radialGradient>
+    <radialGradient id="foliage2" cx="45%" cy="35%" r="55%">
+      <stop offset="0%"   stop-color="#58a038"/>
+      <stop offset="100%" stop-color="#1a4810"/>
+    </radialGradient>
+
+    <!-- Cypress tree -->
+    <linearGradient id="cypress" x1="0.3" y1="0" x2="0.7" y2="1">
+      <stop offset="0%"   stop-color="#2a5828"/>
+      <stop offset="100%" stop-color="#0e2810"/>
+    </linearGradient>
+
+    <!-- Shadow -->
+    <linearGradient id="shadowG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="rgba(0,0,0,0.35)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </linearGradient>
+
+    <!-- Wall side shadow -->
+    <linearGradient id="wallSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="rgba(0,0,0,0.4)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </linearGradient>
+
+    <filter id="softBlur">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+    <filter id="tinyBlur">
+      <feGaussianBlur stdDeviation="0.6"/>
+    </filter>
+
+    <!-- Glow for dome -->
+    <filter id="glowDome" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+  </defs>
+
+  <!-- ═══════════ SKY ═══════════ -->
+  <rect width="680" height="320" fill="url(#sky)"/>
+
+  <!-- Sun glow -->
+  <ellipse cx="420" cy="228" rx="160" ry="100" fill="url(#sunGlow)"/>
+
+  <!-- Sun disk -->
+  <circle cx="420" cy="235" r="22" fill="#fff8c0" opacity="0.95" filter="url(#softBlur)"/>
+  <circle cx="420" cy="235" r="15" fill="#fffbe0" opacity="1"/>
+
+  <!-- Horizon haze -->
+  <rect x="0" y="260" width="680" height="60" fill="rgba(200,144,64,0.25)"/>
+
+  <!-- Stars / planets (upper sky) -->
+  <circle cx="80"  cy="28"  r="1.5" fill="#fff" opacity="0.8">
+    <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="18"  r="1"   fill="#fff" opacity="0.7">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="220" cy="30"  r="1.2" fill="#fff" opacity="0.6">
+    <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="560" cy="22"  r="1.5" fill="#fff" opacity="0.75">
+    <animate attributeName="opacity" values="0.4;1;0.4" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="620" cy="40"  r="1"   fill="#fff" opacity="0.65">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="50"  cy="55"  r="0.8" fill="#fff" opacity="0.5">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="490" cy="15"  r="1.2" fill="#fff" opacity="0.7">
+    <animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Crescent moon (upper right) -->
+  <circle cx="600" cy="52" r="18" fill="#f8e88a" opacity="0.95"/>
+  <circle cx="610" cy="46" r="15" fill="#3a1050"/>
+  <!-- crescent glow -->
+  <circle cx="600" cy="52" r="20" fill="none" stroke="#f8e88a" stroke-width="0.5" opacity="0.5" filter="url(#softBlur)"/>
+
+  <!-- ═══════════ FAR BACKGROUND HILLS / OLD CITY OUTLINE ═══════════ -->
+  <!-- Distant hills (hazy warm sienna) -->
+  <path d="M0 200 Q60 165 130 175 Q200 185 270 168 Q340 150 420 160 Q500 170 570 155 Q630 142 680 150 L680 320 L0 320 Z"
+        fill="#c89858" opacity="0.45"/>
+  <path d="M0 215 Q80 195 160 200 Q240 205 310 195 Q380 183 450 190 Q530 198 600 185 Q645 178 680 182 L680 320 L0 320 Z"
+        fill="#b88848" opacity="0.35"/>
+
+  <!-- Background city silhouette (Old City walls, minarets, domes) -->
+  <!-- Old City outer wall silhouette -->
+  <path d="M20 240 L20 228 L30 228 L30 220 L40 220 L40 228 L55 228 L55 215 L65 215 L65 228 L80 228 L80 222
+           L90 222 L90 214 L100 214 L100 222 L115 222 L115 240"
+        fill="#7a5830" opacity="0.6"/>
+
+  <!-- Background minarets left -->
+  <rect x="35" y="185" width="8" height="42" fill="#906040" opacity="0.55"/>
+  <ellipse cx="39" cy="183" rx="5" ry="3" fill="#806030" opacity="0.55"/>
+  <rect x="37" y="178" width="4" height="8" fill="#806030" opacity="0.55"/>
+
+  <rect x="75" y="192" width="7" height="35" fill="#906040" opacity="0.5"/>
+  <ellipse cx="78" cy="190" rx="4.5" ry="2.5" fill="#806030" opacity="0.5"/>
+
+  <!-- Background Church of Holy Sepulchre dome (far left area) -->
+  <path d="M100 218 Q108 198 116 218 Z" fill="#a07848" opacity="0.5"/>
+  <rect x="100" y="218" width="16" height="18" fill="#907040" opacity="0.5"/>
+
+  <!-- ═══════════ ESPLANADE / TEMPLE MOUNT PLATFORM ═══════════ -->
+  <rect x="80" y="248" width="520" height="72" fill="url(#ground)" rx="2"/>
+  <!-- Platform edge highlight -->
+  <rect x="80" y="248" width="520" height="3" fill="rgba(255,255,220,0.3)"/>
+  <!-- Ground stone joints (horizontal) -->
+  <line x1="80"  y1="262" x2="600" y2="262" stroke="rgba(0,0,0,0.08)" stroke-width="0.8"/>
+  <line x1="80"  y1="276" x2="600" y2="276" stroke="rgba(0,0,0,0.08)" stroke-width="0.8"/>
+  <line x1="80"  y1="290" x2="600" y2="290" stroke="rgba(0,0,0,0.06)" stroke-width="0.8"/>
+  <line x1="80"  y1="304" x2="600" y2="304" stroke="rgba(0,0,0,0.06)" stroke-width="0.8"/>
+  <!-- Ground stone joints (vertical) -->
+  <line x1="130" y1="248" x2="130" y2="320" stroke="rgba(0,0,0,0.06)" stroke-width="0.6"/>
+  <line x1="180" y1="248" x2="180" y2="320" stroke="rgba(0,0,0,0.05)" stroke-width="0.6"/>
+  <line x1="235" y1="248" x2="235" y2="320" stroke="rgba(0,0,0,0.05)" stroke-width="0.6"/>
+  <line x1="285" y1="248" x2="285" y2="320" stroke="rgba(0,0,0,0.06)" stroke-width="0.6"/>
+  <line x1="340" y1="248" x2="340" y2="320" stroke="rgba(0,0,0,0.05)" stroke-width="0.6"/>
+  <line x1="395" y1="248" x2="395" y2="320" stroke="rgba(0,0,0,0.05)" stroke-width="0.6"/>
+  <line x1="450" y1="248" x2="450" y2="320" stroke="rgba(0,0,0,0.06)" stroke-width="0.6"/>
+  <line x1="505" y1="248" x2="505" y2="320" stroke="rgba(0,0,0,0.05)" stroke-width="0.6"/>
+  <line x1="555" y1="248" x2="555" y2="320" stroke="rgba(0,0,0,0.05)" stroke-width="0.6"/>
+
+  <!-- ═══════════ MAIN BUILDING (OCTAGONAL BASE) ═══════════ -->
+  <!-- Outer walls — main stone -->
+  <rect x="148" y="195" width="384" height="60" fill="url(#stoneG)"/>
+  <!-- Side shadow on right -->
+  <rect x="500" y="195" width="32" height="60" fill="url(#wallSide)"/>
+
+  <!-- Lower mosaic/tile band -->
+  <rect x="152" y="185" width="376" height="14" fill="url(#tileGreen)"/>
+  <!-- Mosaic tile detail -->
+  <g opacity="0.5">
+    <rect x="152" y="185" width="376" height="3" fill="rgba(255,255,255,0.15)"/>
+    <!-- individual tile hints -->
+    <rect x="162" y="188" width="10" height="8" fill="rgba(255,255,255,0.07)" rx="0.5"/>
+    <rect x="176" y="188" width="10" height="8" fill="rgba(0,0,0,0.07)" rx="0.5"/>
+    <rect x="190" y="188" width="10" height="8" fill="rgba(255,255,255,0.07)" rx="0.5"/>
+    <rect x="204" y="188" width="10" height="8" fill="rgba(0,0,0,0.05)" rx="0.5"/>
+    <rect x="218" y="188" width="10" height="8" fill="rgba(255,255,255,0.07)" rx="0.5"/>
+    <rect x="232" y="188" width="10" height="8" fill="rgba(0,0,0,0.07)" rx="0.5"/>
+    <rect x="246" y="188" width="10" height="8" fill="rgba(255,255,255,0.06)" rx="0.5"/>
+    <rect x="260" y="188" width="10" height="8" fill="rgba(0,0,0,0.06)" rx="0.5"/>
+    <rect x="274" y="188" width="10" height="8" fill="rgba(255,255,255,0.07)" rx="0.5"/>
+    <rect x="288" y="188" width="10" height="8" fill="rgba(0,0,0,0.07)" rx="0.5"/>
+    <rect x="302" y="188" width="10" height="8" fill="rgba(255,255,255,0.07)" rx="0.5"/>
+    <rect x="316" y="188" width="10" height="8" fill="rgba(0,0,0,0.06)" rx="0.5"/>
+    <rect x="330" y="188" width="10" height="8" fill="rgba(255,255,255,0.07)" rx="0.5"/>
+    <rect x="344" y="188" width="10" height="8" fill="rgba(0,0,0,0.07)" rx="0.5"/>
+    <rect x="358" y="188" width="10" height="8" fill="rgba(255,255,255,0.06)" rx="0.5"/>
+    <rect x="372" y="188" width="10" height="8" fill="rgba(0,0,0,0.05)" rx="0.5"/>
+    <rect x="386" y="188" width="10" height="8" fill="rgba(255,255,255,0.07)" rx="0.5"/>
+    <rect x="400" y="188" width="10" height="8" fill="rgba(0,0,0,0.07)" rx="0.5"/>
+    <rect x="414" y="188" width="10" height="8" fill="rgba(255,255,255,0.07)" rx="0.5"/>
+    <rect x="428" y="188" width="10" height="8" fill="rgba(0,0,0,0.06)" rx="0.5"/>
+    <rect x="442" y="188" width="10" height="8" fill="rgba(255,255,255,0.07)" rx="0.5"/>
+    <rect x="456" y="188" width="10" height="8" fill="rgba(0,0,0,0.07)" rx="0.5"/>
+    <rect x="470" y="188" width="10" height="8" fill="rgba(255,255,255,0.06)" rx="0.5"/>
+    <rect x="484" y="188" width="10" height="8" fill="rgba(0,0,0,0.06)" rx="0.5"/>
+    <rect x="498" y="188" width="10" height="8" fill="rgba(255,255,255,0.07)" rx="0.5"/>
+  </g>
+
+  <!-- Upper blue tile band -->
+  <rect x="152" y="172" width="376" height="15" fill="url(#tileBlue)"/>
+  <!-- Blue tile geometric pattern (diamond/chevron) -->
+  <g stroke="rgba(255,255,255,0.3)" stroke-width="0.7" fill="none">
+    <polyline points="162,172 167,179 172,172"/>
+    <polyline points="178,172 183,179 188,172"/>
+    <polyline points="194,172 199,179 204,172"/>
+    <polyline points="210,172 215,179 220,172"/>
+    <polyline points="226,172 231,179 236,172"/>
+    <polyline points="242,172 247,179 252,172"/>
+    <polyline points="258,172 263,179 268,172"/>
+    <polyline points="274,172 279,179 284,172"/>
+    <polyline points="290,172 295,179 300,172"/>
+    <polyline points="306,172 311,179 316,172"/>
+    <polyline points="322,172 327,179 332,172"/>
+    <polyline points="338,172 343,179 348,172"/>
+    <polyline points="354,172 359,179 364,172"/>
+    <polyline points="370,172 375,179 380,172"/>
+    <polyline points="386,172 391,179 396,172"/>
+    <polyline points="402,172 407,179 412,172"/>
+    <polyline points="418,172 423,179 428,172"/>
+    <polyline points="434,172 439,179 444,172"/>
+    <polyline points="450,172 455,179 460,172"/>
+    <polyline points="466,172 471,179 476,172"/>
+    <polyline points="482,172 487,179 492,172"/>
+    <polyline points="498,172 503,179 508,172"/>
+    <polyline points="514,172 519,179 524,172"/>
+  </g>
+  <rect x="152" y="185" width="376" height="1.5" fill="rgba(200,168,80,0.6)"/>
+
+  <!-- Gold top cornice of building -->
+  <rect x="150" y="169" width="380" height="4" fill="rgba(220,180,60,0.7)"/>
+
+  <!-- Arched windows on main building — large (pointed Islamic arch shape) -->
+  <!-- Left windows -->
+  <path d="M168 200 L168 248 Q183 260 198 248 L198 200 Z" fill="rgba(60,30,10,0.6)"/>
+  <path d="M170 200 L170 246 Q183 257 196 246 L196 200 Z" fill="#2a1508"/>
+  <!-- window glow/light -->
+  <path d="M174 238 L174 246 Q183 252 192 246 L192 238 Q183 244 174 238 Z" fill="rgba(240,180,60,0.12)"/>
+
+  <path d="M210 200 L210 248 Q225 260 240 248 L240 200 Z" fill="rgba(60,30,10,0.6)"/>
+  <path d="M212 200 L212 246 Q225 257 238 246 L238 200 Z" fill="#2a1508"/>
+
+  <!-- Central ornate door (main portal) -->
+  <path d="M300 195 L300 254 Q340 272 380 254 L380 195 Z" fill="rgba(50,25,8,0.7)"/>
+  <path d="M304 195 L304 252 Q340 268 376 252 L376 195 Z" fill="#1e1005"/>
+  <!-- door frame gold trim -->
+  <path d="M300 195 L300 254 Q340 272 380 254 L380 195" fill="none" stroke="rgba(200,160,40,0.6)" stroke-width="2"/>
+  <!-- door details (panels) -->
+  <rect x="312" y="210" width="18" height="22" fill="rgba(180,130,30,0.15)" rx="2"/>
+  <rect x="350" y="210" width="18" height="22" fill="rgba(180,130,30,0.15)" rx="2"/>
+  <rect x="312" y="236" width="18" height="14" fill="rgba(180,130,30,0.12)" rx="1"/>
+  <rect x="350" y="236" width="18" height="14" fill="rgba(180,130,30,0.12)" rx="1"/>
+  <!-- door keyhole -->
+  <ellipse cx="340" cy="256" rx="4" ry="4" fill="rgba(180,130,30,0.3)"/>
+  <rect x="338" y="256" width="4" height="6" fill="rgba(180,130,30,0.25)"/>
+
+  <!-- Right windows -->
+  <path d="M440 200 L440 248 Q455 260 470 248 L470 200 Z" fill="rgba(60,30,10,0.6)"/>
+  <path d="M442 200 L442 246 Q455 257 468 246 L468 200 Z" fill="#2a1508"/>
+
+  <path d="M482 200 L482 248 Q497 260 512 248 L512 200 Z" fill="rgba(60,30,10,0.6)"/>
+  <path d="M484 200 L484 246 Q497 257 510 246 L510 200 Z" fill="#2a1508"/>
+
+  <!-- Stone wall texture (horizontal courses) -->
+  <g stroke="rgba(0,0,0,0.07)" stroke-width="0.6" fill="none">
+    <line x1="148" y1="205" x2="532" y2="205"/>
+    <line x1="148" y1="215" x2="532" y2="215"/>
+    <line x1="148" y1="225" x2="532" y2="225"/>
+    <line x1="148" y1="235" x2="532" y2="235"/>
+    <line x1="148" y1="245" x2="532" y2="245"/>
+  </g>
+  <!-- vertical stone joints (offset rows) -->
+  <g stroke="rgba(0,0,0,0.05)" stroke-width="0.5" fill="none">
+    <line x1="165" y1="195" x2="165" y2="255"/>
+    <line x1="195" y1="200" x2="195" y2="255"/>  <!-- skip same row offsets -->
+    <line x1="250" y1="195" x2="250" y2="255"/>
+    <line x1="290" y1="200" x2="290" y2="255"/>
+    <line x1="392" y1="195" x2="392" y2="255"/>
+    <line x1="430" y1="200" x2="430" y2="255"/>
+    <line x1="485" y1="195" x2="485" y2="255"/>
+    <line x1="520" y1="200" x2="520" y2="255"/>
+  </g>
+
+  <!-- ═══════════ DRUM (OCTAGONAL TRANSITION) ═══════════ -->
+  <rect x="192" y="136" width="296" height="38" fill="url(#stoneGDark)"/>
+  <!-- drum decorative gold band top and bottom -->
+  <rect x="194" y="136" width="292" height="4" fill="rgba(210,168,50,0.65)"/>
+  <rect x="194" y="168" width="292" height="3" fill="rgba(180,138,30,0.55)"/>
+  <!-- drum carved arched windows (6) -->
+  <path d="M208 140 L208 168 Q220 176 232 168 L232 140 Z" fill="rgba(40,20,5,0.55)"/>
+  <path d="M210 140 L210 167 Q220 174 230 167 L230 140 Z" fill="#140a02" opacity="0.8"/>
+
+  <path d="M244 140 L244 168 Q256 176 268 168 L268 140 Z" fill="rgba(40,20,5,0.55)"/>
+  <path d="M246 140 L246 167 Q256 174 266 167 L266 140 Z" fill="#140a02" opacity="0.8"/>
+
+  <path d="M280 140 L280 168 Q292 176 304 168 L304 140 Z" fill="rgba(40,20,5,0.55)"/>
+  <path d="M282 140 L282 167 Q292 174 302 167 L302 140 Z" fill="#140a02" opacity="0.8"/>
+
+  <path d="M316 140 L316 168 Q328 176 340 168 L340 140 Z" fill="rgba(40,20,5,0.55)"/>
+  <path d="M318 140 L318 167 Q328 174 338 167 L338 140 Z" fill="#140a02" opacity="0.8"/>
+
+  <path d="M352 140 L352 168 Q364 176 376 168 L376 140 Z" fill="rgba(40,20,5,0.55)"/>
+  <path d="M354 140 L354 167 Q364 174 374 167 L374 140 Z" fill="#140a02" opacity="0.8"/>
+
+  <path d="M388 140 L388 168 Q400 176 412 168 L412 140 Z" fill="rgba(40,20,5,0.55)"/>
+  <path d="M390 140 L390 167 Q400 174 410 167 L410 140 Z" fill="#140a02" opacity="0.8"/>
+
+  <path d="M424 140 L424 168 Q436 176 448 168 L448 140 Z" fill="rgba(40,20,5,0.55)"/>
+  <path d="M426 140 L426 167 Q436 174 446 167 L446 140 Z" fill="#140a02" opacity="0.8"/>
+
+  <path d="M460 140 L460 168 Q472 176 484 168 L484 140 Z" fill="rgba(40,20,5,0.55)"/>
+  <path d="M462 140 L462 167 Q472 174 482 167 L482 140 Z" fill="#140a02" opacity="0.8"/>
+
+  <!-- drum stone courses -->
+  <g stroke="rgba(0,0,0,0.07)" stroke-width="0.5">
+    <line x1="192" y1="148" x2="488" y2="148"/>
+    <line x1="192" y1="157" x2="488" y2="157"/>
+    <line x1="192" y1="166" x2="488" y2="166"/>
+  </g>
+
+  <!-- ═══════════ THE GOLDEN DOME ═══════════ -->
+  <!-- dome shadow cast on drum -->
+  <ellipse cx="340" cy="137" rx="150" ry="10" fill="rgba(0,0,0,0.2)" filter="url(#softBlur)"/>
+
+  <!-- Main dome shape -->
+  <path d="M194 138 Q198 70 340 42 Q482 70 486 138 Z" fill="url(#domeMain)" filter="url(#glowDome)"/>
+  <!-- dome highlight (specular) -->
+  <path d="M194 138 Q198 70 340 42 Q482 70 486 138 Z" fill="url(#domeHighlight)"/>
+
+  <!-- Dome rib lines (give 3D feel) -->
+  <g stroke="rgba(100,70,0,0.2)" stroke-width="0.9" fill="none">
+    <path d="M340 42 Q294 88 262 138"/>
+    <path d="M340 42 Q308 82 285 138"/>
+    <path d="M340 42 Q323 72 312 138"/>
+    <path d="M340 42 Q357 72 368 138"/>
+    <path d="M340 42 Q372 82 395 138"/>
+    <path d="M340 42 Q386 88 418 138"/>
+  </g>
+  <!-- bright highlight arc -->
+  <path d="M260 122 Q296 72 334 55" stroke="rgba(255,252,200,0.55)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M266 128 Q300 80 336 62" stroke="rgba(255,252,200,0.25)" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#softBlur)"/>
+  <!-- shadow side -->
+  <path d="M388 60 Q420 90 480 135 Q450 100 410 78 Z" fill="rgba(100,60,0,0.18)"/>
+
+  <!-- Gold band at base of dome -->
+  <rect x="196" y="133" width="288" height="7" fill="rgba(220,170,40,0.75)"/>
+  <rect x="196" y="133" width="288" height="2" fill="rgba(255,235,100,0.5)"/>
+
+  <!-- ═══════════ SPIRE & CRESCENT ═══════════ -->
+  <!-- Spire shaft -->
+  <rect x="337" y="10" width="6" height="34" fill="#c8a030"/>
+  <rect x="337.5" y="10" width="2.5" height="34" fill="rgba(255,240,120,0.5)"/>
+
+  <!-- Crescent moon finial -->
+  <circle cx="340" cy="6" r="10" fill="#e8c030"/>
+  <circle cx="345" cy="3" r="8" fill="#3a1a50"/>
+  <!-- crescent glow -->
+  <circle cx="340" cy="6" r="12" fill="none" stroke="#e8c030" stroke-width="0.6" opacity="0.6" filter="url(#softBlur)"/>
+
+  <!-- Tiny star near crescent -->
+  <g transform="translate(354, 2) scale(0.85)">
+    <polygon points="0,-5 1.2,-1.8 4.8,-1.8 1.9,0.7 3,4 0,2.1 -3,4 -1.9,0.7 -4.8,-1.8 -1.2,-1.8" fill="#e8d050" opacity="0.9"/>
+  </g>
+
+  <!-- ═══════════ LEFT MINARET ═══════════ -->
+  <!-- Left minaret (al-Ghawanima style) -->
+  <rect x="148" y="100" width="16" height="98" fill="url(#stoneG)"/>
+  <!-- minaret balcony -->
+  <rect x="143" y="145" width="26" height="5" fill="url(#stoneGDark)" rx="1"/>
+  <!-- stone courses -->
+  <g stroke="rgba(0,0,0,0.08)" stroke-width="0.5">
+    <line x1="148" y1="115" x2="164" y2="115"/>
+    <line x1="148" y1="128" x2="164" y2="128"/>
+    <line x1="148" y1="140" x2="164" y2="140"/>
+    <line x1="148" y1="155" x2="164" y2="155"/>
+    <line x1="148" y1="168" x2="164" y2="168"/>
+    <line x1="148" y1="180" x2="164" y2="180"/>
+  </g>
+  <!-- minaret window -->
+  <path d="M153 158 L153 170 Q156 174 159 170 L159 158 Z" fill="#140a02" opacity="0.7"/>
+  <!-- minaret cap (muqarnas) -->
+  <path d="M145 100 L148 88 Q156 76 164 88 L167 100 Z" fill="url(#stoneGDark)"/>
+  <!-- decorative band -->
+  <rect x="147" y="98" width="18" height="3" fill="rgba(200,160,40,0.5)"/>
+  <!-- crescent finial -->
+  <line x1="156" y1="76" x2="156" y2="68" stroke="#c8a030" stroke-width="2"/>
+  <circle cx="156" cy="64" r="5" fill="#d8b030"/>
+  <circle cx="159" cy="62" r="4" fill="#2a1508"/>
+
+  <!-- ═══════════ RIGHT MINARET ═══════════ -->
+  <rect x="516" y="110" width="15" height="88" fill="url(#stoneG)"/>
+  <rect x="512" y="152" width="23" height="4.5" fill="url(#stoneGDark)" rx="1"/>
+  <g stroke="rgba(0,0,0,0.08)" stroke-width="0.5">
+    <line x1="516" y1="125" x2="531" y2="125"/>
+    <line x1="516" y1="138" x2="531" y2="138"/>
+    <line x1="516" y1="150" x2="531" y2="150"/>
+    <line x1="516" y1="163" x2="531" y2="163"/>
+    <line x1="516" y1="175" x2="531" y2="175"/>
+    <line x1="516" y1="186" x2="531" y2="186"/>
+  </g>
+  <path d="M520 167 L520 178 Q523 182 526 178 L526 167 Z" fill="#140a02" opacity="0.7"/>
+  <path d="M513 110 L516 99 Q523 88 531 99 L534 110 Z" fill="url(#stoneGDark)"/>
+  <rect x="515" y="108" width="16" height="3" fill="rgba(200,160,40,0.5)"/>
+  <line x1="523" y1="88" x2="523" y2="81" stroke="#c8a030" stroke-width="1.8"/>
+  <circle cx="523" cy="77" r="4.5" fill="#d8b030"/>
+  <circle cx="526" cy="75" r="3.5" fill="#2a1508"/>
+
+  <!-- ═══════════ OLIVE TREES ═══════════ -->
+  <!-- Left olive tree cluster -->
+  <!-- Tree trunk 1 -->
+  <path d="M82 290 Q84 268 86 248 Q88 235 84 220" stroke="#6b4a28" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M84 220 Q80 208 78 200" stroke="#6b4a28" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M84 235 Q76 225 70 215" stroke="#6b4a28" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M86 248 Q94 238 100 230" stroke="#6b4a28" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Foliage blobs left tree -->
+  <ellipse cx="78" cy="198" rx="22" ry="18" fill="url(#foliage1)" opacity="0.92"/>
+  <ellipse cx="68" cy="208" rx="16" ry="14" fill="url(#foliage2)" opacity="0.85"/>
+  <ellipse cx="90" cy="205" rx="14" ry="12" fill="url(#foliage1)" opacity="0.80"/>
+  <ellipse cx="74" cy="190" rx="14" ry="11" fill="url(#foliage2)" opacity="0.75"/>
+  <ellipse cx="85" cy="192" rx="11" ry="10" fill="url(#foliage1)" opacity="0.70"/>
+  <!-- olive berries -->
+  <circle cx="72" cy="204" r="2" fill="#a8d868" opacity="0.7"/>
+  <circle cx="82" cy="196" r="1.8" fill="#90c050" opacity="0.7"/>
+  <circle cx="90" cy="210" r="1.8" fill="#a8d868" opacity="0.65"/>
+  <circle cx="65" cy="212" r="1.5" fill="#90c050" opacity="0.65"/>
+
+  <!-- Second left tree -->
+  <path d="M118 290 Q119 272 120 258 Q121 244 118 230" stroke="#7a5432" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M118 230 Q115 218 112 210" stroke="#7a5432" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M119 244 Q128 234 134 226" stroke="#7a5432" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <ellipse cx="114" cy="208" rx="20" ry="17" fill="url(#foliage1)" opacity="0.88"/>
+  <ellipse cx="104" cy="216" rx="14" ry="12" fill="url(#foliage2)" opacity="0.82"/>
+  <ellipse cx="126" cy="213" rx="13" ry="11" fill="url(#foliage1)" opacity="0.78"/>
+  <ellipse cx="110" cy="200" rx="13" ry="10" fill="url(#foliage2)" opacity="0.72"/>
+  <circle cx="106" cy="212" r="1.8" fill="#a8d868" opacity="0.65"/>
+  <circle cx="118" cy="206" r="1.6" fill="#90c050" opacity="0.65"/>
+
+  <!-- Right olive trees -->
+  <path d="M590 290 Q588 270 587 252 Q586 238 590 222" stroke="#6b4a28" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M590 222 Q594 210 596 202" stroke="#6b4a28" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M588 236 Q596 226 602 218" stroke="#6b4a28" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M587 252 Q578 242 572 234" stroke="#6b4a28" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <ellipse cx="596" cy="200" rx="22" ry="18" fill="url(#foliage1)" opacity="0.92"/>
+  <ellipse cx="608" cy="210" rx="16" ry="14" fill="url(#foliage2)" opacity="0.85"/>
+  <ellipse cx="582" cy="207" rx="14" ry="12" fill="url(#foliage1)" opacity="0.80"/>
+  <ellipse cx="600" cy="192" rx="14" ry="11" fill="url(#foliage2)" opacity="0.75"/>
+  <circle cx="590" cy="196" r="2" fill="#a8d868" opacity="0.68"/>
+  <circle cx="604" cy="208" r="1.8" fill="#90c050" opacity="0.68"/>
+  <circle cx="580" cy="212" r="1.8" fill="#a8d868" opacity="0.62"/>
+
+  <path d="M548 290 Q549 272 551 256 Q552 242 548 228" stroke="#7a5432" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M548 228 Q545 217 542 208" stroke="#7a5432" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <ellipse cx="544" cy="206" rx="20" ry="17" fill="url(#foliage1)" opacity="0.88"/>
+  <ellipse cx="554" cy="214" rx="14" ry="12" fill="url(#foliage2)" opacity="0.82"/>
+  <ellipse cx="534" cy="213" rx="13" ry="11" fill="url(#foliage1)" opacity="0.78"/>
+  <circle cx="556" cy="210" r="1.8" fill="#a8d868" opacity="0.65"/>
+
+  <!-- Cypress trees (tall, narrow, very Jerusalem) -->
+  <!-- Left cypress -->
+  <rect x="134" y="195" width="7" height="55" fill="#3a5820"/>
+  <path d="M130 246 Q137 188 145 246 Z" fill="url(#cypress)"/>
+  <path d="M131 240 Q137 195 144 240" fill="url(#cypress)" opacity="0.85"/>
+  <path d="M132 230 Q137 205 143 230" fill="url(#cypress)" opacity="0.7"/>
+  <!-- Right cypress -->
+  <rect x="539" y="198" width="7" height="52" fill="#3a5820"/>
+  <path d="M535 248 Q542 190 550 248 Z" fill="url(#cypress)"/>
+  <path d="M536 242 Q542 197 549 242" fill="url(#cypress)" opacity="0.85"/>
+  <path d="M537 232 Q542 208 548 232" fill="url(#cypress)" opacity="0.7"/>
+
+  <!-- ═══════════ FOREGROUND SHADOWS / DEPTH ═══════════ -->
+  <!-- Building shadow on ground -->
+  <ellipse cx="340" cy="252" rx="200" ry="12" fill="rgba(0,0,0,0.18)" filter="url(#softBlur)"/>
+
+  <!-- Atmospheric overlay (dusk warmth on lower scene) -->
+  <rect x="0" y="200" width="680" height="120" fill="rgba(200,120,20,0.08)"/>
+
+  <!-- Palestinian flag — draped/waving (left side, foreground) -->
+  <!-- Flag pole -->
+  <line x1="22" y1="100" x2="22" y2="290" stroke="#7a5830" stroke-width="3" stroke-linecap="round"/>
+  <!-- Flag fabric (waving shape) -->
+  <path d="M22 105 Q60 108 95 104 Q130 100 140 107 Q130 118 95 116 Q60 120 22 117 Z" fill="#1c1208"/>
+  <path d="M22 117 Q60 120 95 116 Q130 112 140 119 Q130 130 95 128 Q60 132 22 129 Z" fill="#f5f0e8"/>
+  <path d="M22 129 Q60 132 95 128 Q130 124 140 131 Q130 142 95 140 Q60 144 22 141 Z" fill="#1a5a30"/>
+  <!-- Red triangle on flag -->
+  <path d="M22 105 L22 141 L55 123 Z" fill="#c0392b"/>
+  <!-- flag shadow/fold lines -->
+  <path d="M70 106 Q75 115 70 124 Q75 133 70 141" stroke="rgba(0,0,0,0.1)" stroke-width="1" fill="none"/>
+  <path d="M105 104 Q110 115 105 127 Q110 135 105 139" stroke="rgba(0,0,0,0.08)" stroke-width="0.8" fill="none"/>
+
+  <!-- Olive branch (floating, decorative, lower right) -->
+  <g transform="translate(580, 270) rotate(-25)">
+    <path d="M0 0 Q15 -8 30 -18 Q42 -26 55 -32" stroke="#5a8030" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="12"  cy="-5"  rx="7" ry="4" fill="#6a9838" transform="rotate(20 12 -5)"/>
+    <ellipse cx="22"  cy="-11" rx="7" ry="4" fill="#5a8828" transform="rotate(15 22 -11)"/>
+    <ellipse cx="33"  cy="-18" rx="6" ry="3.5" fill="#6a9838" transform="rotate(10 33 -18)"/>
+    <ellipse cx="44"  cy="-25" rx="6" ry="3.5" fill="#5a8828" transform="rotate(5 44 -25)"/>
+    <circle cx="18"  cy="-8"  r="1.8" fill="#a8d050" opacity="0.8"/>
+    <circle cx="30"  cy="-15" r="1.5" fill="#90b840" opacity="0.8"/>
+    <circle cx="42"  cy="-22" r="1.5" fill="#a8d050" opacity="0.75"/>
+  </g>
+
+</svg>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <div class="lead">
+    Share your voice with <strong>Rowan SJP</strong>.<br>
+    Your piece will help educate, mobilize, and inform our community.
+  </div>
+
+  <div class="kef-divider"></div>
+
+  <div class="topics-lbl">✦ &nbsp; We welcome writing on &nbsp; ✦</div>
+  <div class="topics">
+    <span class="pill sr">Palestinian Liberation</span>
+    <span class="pill pg">Campus Organizing</span>
+    <span class="pill py">History</span>
+    <span class="pill pk">Lived Experience</span>
+    <span class="pill sg">Solidarity</span>
+    <span class="pill pr">Reflections</span>
+    <span class="pill py">Call to Action</span>
+  </div>
+
+  <!-- Watermelon row -->
+  <div class="wm-row">
+    <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 14 A11 11 0 0 1 25 14 Z" fill="#c0392b"/>
+      <path d="M4.5 14 A9.5 9.5 0 0 1 23.5 14 Z" fill="#e74c3c"/>
+      <rect x="3" y="13.5" width="22" height="2.5" fill="#f5f0e8" rx="1"/>
+      <rect x="3" y="15.8" width="22" height="3" fill="#1a5a30" rx="1"/>
+      <circle cx="9"  cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+      <circle cx="14" cy="9.5" r="1"  fill="#1c1208" opacity="0.75"/>
+      <circle cx="19" cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+    </svg>
+    <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 14 A11 11 0 0 1 25 14 Z" fill="#c0392b"/>
+      <path d="M4.5 14 A9.5 9.5 0 0 1 23.5 14 Z" fill="#e74c3c"/>
+      <rect x="3" y="13.5" width="22" height="2.5" fill="#f5f0e8" rx="1"/>
+      <rect x="3" y="15.8" width="22" height="3" fill="#1a5a30" rx="1"/>
+      <circle cx="9"  cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+      <circle cx="14" cy="9.5" r="1"  fill="#1c1208" opacity="0.75"/>
+      <circle cx="19" cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+    </svg>
+    <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 14 A11 11 0 0 1 25 14 Z" fill="#c0392b"/>
+      <path d="M4.5 14 A9.5 9.5 0 0 1 23.5 14 Z" fill="#e74c3c"/>
+      <rect x="3" y="13.5" width="22" height="2.5" fill="#f5f0e8" rx="1"/>
+      <rect x="3" y="15.8" width="22" height="3" fill="#1a5a30" rx="1"/>
+      <circle cx="9"  cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+      <circle cx="14" cy="9.5" r="1"  fill="#1c1208" opacity="0.75"/>
+      <circle cx="19" cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+    </svg>
+    <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 14 A11 11 0 0 1 25 14 Z" fill="#c0392b"/>
+      <path d="M4.5 14 A9.5 9.5 0 0 1 23.5 14 Z" fill="#e74c3c"/>
+      <rect x="3" y="13.5" width="22" height="2.5" fill="#f5f0e8" rx="1"/>
+      <rect x="3" y="15.8" width="22" height="3" fill="#1a5a30" rx="1"/>
+      <circle cx="9"  cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+      <circle cx="14" cy="9.5" r="1"  fill="#1c1208" opacity="0.75"/>
+      <circle cx="19" cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+    </svg>
+    <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 14 A11 11 0 0 1 25 14 Z" fill="#c0392b"/>
+      <path d="M4.5 14 A9.5 9.5 0 0 1 23.5 14 Z" fill="#e74c3c"/>
+      <rect x="3" y="13.5" width="22" height="2.5" fill="#f5f0e8" rx="1"/>
+      <rect x="3" y="15.8" width="22" height="3" fill="#1a5a30" rx="1"/>
+      <circle cx="9"  cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+      <circle cx="14" cy="9.5" r="1"  fill="#1c1208" opacity="0.75"/>
+      <circle cx="19" cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+    </svg>
+    <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 14 A11 11 0 0 1 25 14 Z" fill="#c0392b"/>
+      <path d="M4.5 14 A9.5 9.5 0 0 1 23.5 14 Z" fill="#e74c3c"/>
+      <rect x="3" y="13.5" width="22" height="2.5" fill="#f5f0e8" rx="1"/>
+      <rect x="3" y="15.8" width="22" height="3" fill="#1a5a30" rx="1"/>
+      <circle cx="9"  cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+      <circle cx="14" cy="9.5" r="1"  fill="#1c1208" opacity="0.75"/>
+      <circle cx="19" cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+    </svg>
+    <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 14 A11 11 0 0 1 25 14 Z" fill="#c0392b"/>
+      <path d="M4.5 14 A9.5 9.5 0 0 1 23.5 14 Z" fill="#e74c3c"/>
+      <rect x="3" y="13.5" width="22" height="2.5" fill="#f5f0e8" rx="1"/>
+      <rect x="3" y="15.8" width="22" height="3" fill="#1a5a30" rx="1"/>
+      <circle cx="9"  cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+      <circle cx="14" cy="9.5" r="1"  fill="#1c1208" opacity="0.75"/>
+      <circle cx="19" cy="11" r="1"   fill="#1c1208" opacity="0.75"/>
+    </svg>
+  </div>
+
+</div>
+
+<!-- BOTTOM -->
+<div class="bottom">
+  <div class="bottom-left">
+    <div class="anon-badge">
+      <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+        <circle cx="5.5" cy="3.5" r="2.5" stroke="#e8c84a" stroke-width="1"/>
+        <path d="M1 10.5 C1 7.5 10 7.5 10 10.5" stroke="#e8c84a" stroke-width="1" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>Option to Stay Anonymous</span>
+    </div>
+    <div class="submit-url">sjpjournal.github.io/journal/</div>
+    <div class="org-name">Rowan Students for Justice in Palestine</div>
+  </div>
+  <div class="qr-wrap">
+    <div class="qr-box">
+      <img src="frame.png" alt="QR Code" width="102" height="102"/>
+    </div>
+    <div class="qr-lbl">Scan to Submit</div>
+  </div>
+</div>
+
+<!-- FLAG BOTTOM -->
+<div class="flag-bot">
+  <div style="background:#1c1208"></div>
+  <div style="background:#f5f0e8"></div>
+  <div style="background:#1a5a30"></div>
+  <div style="background:#c0392b"></div>
+</div>
+
+</div>
+</body>
+</html>
