@@ -10,7 +10,7 @@ show_call_box: false
 
 # SJP Journal
 
-Welcome to **Rowan SJP Journal**, a publication by _Students for Justice in Palestine (SJP)_ rowan chapter dedicated to informed analysis, historical context, and solidarity reporting on the Palestinian struggle.
+Welcome to **Rowan SJP Journal**, a publication by _Students for Justice in Palestine (SJP)_ Rowan chapter dedicated to informed analysis, historical context, and solidarity reporting on the Palestinian struggle.
 
 Our writing explores the realities of occupation, resistance, and advocacy, connecting student movements with global conversations about justice, human rights, and liberation.
 
