@@ -11,15 +11,12 @@ permalink: /articles/Framing/
 
 # Framing, Agency, and Empathy: Linguistic Patterns in Palestine/Israel News Headlines
 
-```
-A structural analysis for journalists and media professionals
-```
+**A structural analysis for journalists and media professionals**
 
 ---
 
 ## Introduction
 
-```
 Readers rarely reach the article body. Most encounter a headline in a push
 notification, a social media preview, or a search result snippet, and that first
 line becomes the story their brain carries forward. Who acted. Who suffered.
@@ -35,7 +32,6 @@ rooms work under genuine constraints of time, space, wire service dependency,
 and house style. Nor does the asymmetry run uniformly in one direction across
 all outlets at all times. But the patterns are real, they are well-documented,
 and they can be addressed as what they are: editorial choices.
-```
 
 ## Pattern 1: Who Acts, Who Dies
 
@@ -244,9 +240,7 @@ if no one ever wrote it down.
 
 ## Conclusion
 
-```
 Let me be direct about something this kind of analysis usually leaves implicit.
-```
 
 The patterns described here are not symmetrical mistakes. They do not reflect
 a news culture that occasionally slips in both directions with equal frequency.
@@ -274,15 +268,12 @@ it can provide, when it decides to.
 Consistency is both an ethical and a craft value. The framing problem described
 here is a fairness problem, a quality problem, and an accuracy problem. It is
 
-```
 also, and this matters, a solvable one. The tools already exist. The question is
 whether the profession is willing to apply them without regard to whose death
 is being described.
-```
 
 ## References
 
-```
 New York Times — “Missile at Beachside Gaza Cafe Finds Patrons Poised for
 World Cup.” (July 10, 2014; original headline, later revised to “Boys Drawn to
 Gaza Beach, and Into Center of Mideast Strife”)
@@ -299,7 +290,6 @@ Escalates.” (May 2021; 35 of those killed were Palestinian, five Israeli)
 New York Times — “Israeli Strike Kills Hundreds in Hospital, Palestinians
 Say.” (October 17, 2023; subsequently revised twice, followed by editors’ note
 acknowledging over-reliance on unverified Hamas claims)
-```
 
 _Washington Post_ — “With the killing of Shireen Abu Akleh, yet another Pales-
 tinian journalist dies on the job.” (Opinion headline, May 12, 2022)
