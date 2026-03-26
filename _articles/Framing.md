@@ -7,7 +7,7 @@ date: 2026-03-26
 categories: ["Israel-Palestine", "Gaza", "Human Rights"]
 tags:
   ["genocide", "Washington Post", "UN", "PBS NewsHour", "Reuters", "B’Tselem"]
-permalink: "/articles/framing/"
+permalink: /articles/framing/
 ---
 
 # Framing, Agency, and Empathy: Linguistic Patterns in Palestine/Israel News Headlines
