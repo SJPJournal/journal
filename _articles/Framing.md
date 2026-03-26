@@ -1,12 +1,13 @@
 ---
 layout: article
-title: Framing, Agency, and Empathy. Linguistic Patterns in Palestine/Israel News Headlines
+title: "Framing, Agency, and Empathy: Linguistic Patterns in Palestine/Israel News Headlines"
 description: "A structural analysis for journalists and media professionals"
 featured_image: "/images/articles/genocide-report.jpg"
 date: 2026-03-26
-categories: [Israel-Palestine, Gaza, Human Rights]
-tags: [genocide, Washington Post, UN, PBS NewsHour, Reuters, B’Tselem]
-permalink: /articles/Framing/
+categories: ["Israel-Palestine", "Gaza", "Human Rights"]
+tags:
+  ["genocide", "Washington Post", "UN", "PBS NewsHour", "Reuters", "B’Tselem"]
+permalink: "/articles/framing/"
 ---
 
 # Framing, Agency, and Empathy: Linguistic Patterns in Palestine/Israel News Headlines
