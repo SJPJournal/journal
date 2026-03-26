@@ -18,8 +18,7 @@ permalink: "/articles/framing/"
 
 ## Introduction
 
-Readers rarely reach the article body. Most encounter a headline in a push
-notification, a social media preview, or a search result snippet, and that first
+Readers rarely reach the article body. Most encounter a headline in a push notification, a social media preview, or a search result snippet, and that first
 line becomes the story their brain carries forward. Who acted. Who suffered.
 Who was credible. In no contemporary conflict does this matter more than in
 coverage of Palestine and Israel, where a set of recurring editorial habits has
