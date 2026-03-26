@@ -14,7 +14,7 @@ bodyClass: "page-articles"
   </div>
 
   <div class="row">
-    {% assign articles = site.articles | sort: "weight" %}
+    {% assign articles = site.articles | sort: "date" | reverse %}
     {% for article in articles %}
       <div class="col-12 mb-5">
         <div class="article-summary border-bottom pb-4 mb-4">

@@ -2,7 +2,7 @@
 layout: article
 title: "Framing, Agency, and Empathy: Linguistic Patterns in Palestine/Israel News Headlines"
 description: "A structural analysis for journalists and media professionals"
-featured_image: "/images/articles/genocide-report.jpg"
+featured_image: "/images/articles/framing.png"
 date: 2026-03-26
 categories: ["Israel-Palestine", "Gaza", "Human Rights"]
 tags:
