@@ -15,6 +15,8 @@ permalink: /articles/Framing/
 A structural analysis for journalists and media professionals
 ```
 
+---
+
 ## Introduction
 
 ```
